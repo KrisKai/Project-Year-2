@@ -17,7 +17,7 @@ namespace Project_Year_2.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
-            return View();
+            return View("Index", "Home");
         }
         [HttpPost]
         public ActionResult Create(FoodTable table)
@@ -30,7 +30,8 @@ namespace Project_Year_2.Controllers
                 if (id > 0)
                 {
                     string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/newOrder.html"));
-                    content = content.Replace("{{CustomerName}}", table.FirstName);
+                    content = content.Replace("{{FirstName}}", table.FirstName);
+                    content = content.Replace("{{LastName}}", table.LastName);
                     content = content.Replace("{{Phone}}", table.PhoneNumber);
                     content = content.Replace("{{Email}}", table.Email);
                     content = content.Replace("{{PeopleCount}}", table.PeopleCount.ToString());
@@ -47,7 +48,7 @@ namespace Project_Year_2.Controllers
                     ModelState.AddModelError("", "Thêm đơn đặt bàn không thành công");
                 }
             }
-            return View("Index","Home");
+            return RedirectToAction("Index","Home");
         }
     }
 }

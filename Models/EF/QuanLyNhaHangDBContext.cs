@@ -18,6 +18,7 @@ namespace Project_Year_2.Models.EF
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<FoodTable> FoodTables { get; set; }
         public virtual DbSet<MenuCategory> MenuCategories { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -72,6 +73,10 @@ namespace Project_Year_2.Models.EF
 
             modelBuilder.Entity<MenuCategory>()
                 .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Message>()
+                .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Staff>()

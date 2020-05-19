@@ -129,3 +129,4 @@ E:\IT\Project_Restaurant Management\Project Year 2\bin\SendGrid.dll
 E:\IT\Project_Restaurant Management\Project Year 2\bin\Newtonsoft.Json.xml
 E:\IT\Project_Restaurant Management\Project Year 2\bin\SendGrid.pdb
 E:\IT\Project_Restaurant Management\Project Year 2\bin\SendGrid.xml
+E:\IT\Project_Restaurant Management\Project Year 2\obj\Debug\Project Year 2.csprojAssemblyReference.cache

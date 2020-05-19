@@ -2068,6 +2068,7 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2163,6 +2164,7 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\Code\UserSession.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
@@ -2176,12 +2178,12 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\MailHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
-    <Compile Include="Controllers\ConfirmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dao\MessageDao.cs" />
     <Compile Include="Models\Dao\OrderDao.cs" />
     <Compile Include="Models\Dao\StaffDao.cs" />
     <Compile Include="Models\Dao\MenuDao.cs" />
@@ -2192,6 +2194,7 @@
     <Compile Include="Models\EF\Food.cs" />
     <Compile Include="Models\EF\FoodTable.cs" />
     <Compile Include="Models\EF\MenuCategory.cs" />
+    <Compile Include="Models\EF\Message.cs" />
     <Compile Include="Models\EF\QuanLyNhaHangDBContext.cs" />
     <Compile Include="Models\EF\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2216,7 +2219,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Views\Confirm\" />
     <Folder Include="Views\Reservation\" />
   </ItemGroup>
   <ItemGroup>

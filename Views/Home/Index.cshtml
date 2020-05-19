@@ -1,8 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@model Project_Year_2.Models.EF.Message
 
 <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
     <div class="container">
@@ -32,7 +33,7 @@
             <div class="col-md-12">
                 <h1 class="site-heading site-animate mb-3">Welcome To Our restaurant</h1>
                 <h2 class="h5 site-subheading mb-5 site-animate">Come and eat well with our delicious &amp; healthy foods.</h2>
-                <p><a href="https://colorlib.com/" target="_blank" class="btn btn-outline-white btn-lg site-animate" data-toggle="modal" data-target="#reservationModal">Reservation</a></p>
+                <p><a href="https://colorlib.com/" target="_blank" class="btn btn-outline-white btn-lg site-animate" data-toggle="modal" data-target="#reservationModal">Đặt Bàn</a></p>
             </div>
         </div>
     </div>
@@ -232,7 +233,7 @@
                         <div class="row">
                             <div class="col-md-6 site-animate">
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Salted Fried Chicken</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -250,7 +251,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Fried Potato w/ Garlic</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -261,7 +262,7 @@
                             </div>
                             <div class="col-md-6 site-animate">
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Italian Sauce Mushroom</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -270,7 +271,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Salted Fried Chicken</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -279,7 +280,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Fried Potato w/ Garlic</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -303,7 +304,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Salted Fried Chicken</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -312,7 +313,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Italian Sauce Mushroom</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -324,7 +325,7 @@
                             <div class="col-md-6 site-animate">
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg"alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Fried Potato w/ Garlic</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -342,7 +343,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Salted Fried Chicken</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -359,7 +360,7 @@
                             <div class="col-md-6 site-animate">
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Italian Sauce Mushroom</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -368,7 +369,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Salted Fried Chicken</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -377,7 +378,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Fried Potato w/ Garlic</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -389,7 +390,7 @@
                             <div class="col-md-6 site-animate">
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Fried Potato w/ Garlic</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -398,7 +399,7 @@
                                 </div>
 
                                 <div class="media menu-item">
-                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg"  alt="Free Template by colorlib.com">
+                                    <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
                                     <div class="media-body">
                                         <h5 class="mt-0">Italian Sauce Mushroom</h5>
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -542,23 +543,32 @@
             </div>
 
             <div class="col-md-7 mb-5 site-animate">
-                <form action="" method="post">
+                @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        <label for="name" class="sr-only">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Tên">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label sr-only" })
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Tên" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="Email">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label sr-only" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", id = "email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
+                        
                     <div class="form-group">
-                        <label for="message" class="sr-only">Message</label>
-                        <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Để lại lời nhắn"></textarea>
+                        @Html.LabelFor(model => model.Message1, htmlAttributes: new { @class = "control-label sr-only" })
+                        @Html.TextAreaFor(model => model.Message1, new { @class = "form-control", @placeholder = "Để lại lời nhắn", @id = "message", @cols = "30", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.Message1, "", new { @class = "text-danger" })           
                     </div>
+                    @Html.HiddenFor(model=>model.CreatedDate,new { @Value = DateTime.Now.ToShortDateString()})
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-lg" value="Gửi lời nhắn">
                     </div>
-                </form>
+                }
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4 site-animate">
