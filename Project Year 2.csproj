@@ -1819,6 +1819,7 @@
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\fonts\icomoon\icomoon.svg" />
     <Content Include="Assets\Client\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="Assets\Client\images\about_image.jpg" />
     <Content Include="Assets\Client\images\about_img_1.jpg" />
     <Content Include="Assets\Client\images\bg_3.jpg" />
     <Content Include="Assets\Client\images\loc.png" />
@@ -2178,6 +2179,7 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\MailHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2209,6 +2211,7 @@
     <Content Include="Scripts\jquery-3.5.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

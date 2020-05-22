@@ -9,7 +9,7 @@
     <div class="container">
         <a class="navbar-brand" href="/Home/Index">Nhà Hàng</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
+            <span class="oi oi-menu">Menu</span>
         </button>
 
         <div class="collapse navbar-collapse" id="site-nav">
@@ -40,6 +40,7 @@
 </section>
 <!-- END section -->
 
+
 <section class="site-section" id="section-about">
     <div class="container">
         <div class="row">
@@ -49,7 +50,7 @@
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 
                 <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                <p><a href="#" class="btn btn-secondary btn-lg">Learn More About Us</a></p>
+                <p><a href="/About/Index" class="btn btn-secondary btn-lg">Learn More About Us</a></p>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-6 site-animate img" data-animate-effect="fadeInRight">
@@ -448,7 +449,7 @@
                         <h5 class="mt-0 h4">We Have Dilecious Food</h5>
                         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 
-                        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
+                        <p class="mb-0"><a href="https://colorlib.com/" target="_blank" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#news1Modal">Xem thêm</a></p>
                     </div>
                 </div>
             </div>
@@ -459,7 +460,7 @@
                         <h5 class="mt-0 h4">Chef Special Menu</h5>
                         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 
-                        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
+                        <p class="mb-0"><a href="https://colorlib.com/" target="_blank" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#news2Modal">Xem thêm</a></p>
                     </div>
                 </div>
             </div>
@@ -470,7 +471,7 @@
                         <h5 class="mt-0 h4">Merriage Celebrations</h5>
                         <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 
-                        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
+                        <p class="mb-0"><a href="https://colorlib.com/" target="_blank" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#news3Modal">Xem thêm</a></p>
                     </div>
                 </div>
             </div>
@@ -558,13 +559,13 @@
                         @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", id = "email" })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
-                        
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.Message1, htmlAttributes: new { @class = "control-label sr-only" })
                         @Html.TextAreaFor(model => model.Message1, new { @class = "form-control", @placeholder = "Để lại lời nhắn", @id = "message", @cols = "30", @rows = "10" })
-                        @Html.ValidationMessageFor(model => model.Message1, "", new { @class = "text-danger" })           
+                        @Html.ValidationMessageFor(model => model.Message1, "", new { @class = "text-danger" })
                     </div>
-                    @Html.HiddenFor(model=>model.CreatedDate,new { @Value = DateTime.Now.ToShortDateString()})
+                    @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-lg" value="Gửi lời nhắn">
                     </div>
