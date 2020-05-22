@@ -13,13 +13,12 @@ namespace Project_Year_2.Areas.Admin.Controllers
         // GET: Admin/Base
         protected override void OnActionExecuting(ActionExecutingContext actionExecutingContext)
         {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+            var session = (UserLogin)Session["USER_SESSION"];
             if (session == null)
             {
                 actionExecutingContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));
             }
-            //ViewBag.UserName = actionExecutingContext.Controller.ViewData.Model;
             base.OnActionExecuting(actionExecutingContext);
         }
         protected void SetAlert(string message, string type)

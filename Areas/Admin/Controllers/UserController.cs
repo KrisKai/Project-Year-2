@@ -104,5 +104,45 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 status = result
             });
         }
+        
+        [HttpGet]
+        public new ActionResult Profile()
+        {
+            int id = int.Parse(Session["IDName"].ToString());
+            var account = new UserDao().ViewDetail(id);
+            return View(account);
+        }
+
+        public ActionResult Setting()
+        {
+            int id = int.Parse(Session["IDName"].ToString());
+            var account = new UserDao().ViewDetail(id);
+            return View(account);
+        }
+        [HttpPost]
+        public ActionResult Setting(Account account)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var dao = new UserDao();
+                if (!string.IsNullOrEmpty(account.Password))
+                {
+                    var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
+                    account.Password = encryptMd5Pass;
+                }
+                var result = dao.Update(account);
+                if (result)
+                {
+                    SetAlert("Cập nhập tài khoản thành công", "success");
+                    return RedirectToAction("Home", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                }
+            }
+            return View("Home");
+        }
     }
 }

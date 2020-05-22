@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Security;
 
 namespace Project_Year_2.Areas.Admin.Controllers
 {
@@ -33,8 +35,10 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     var user = dao.GetByName(model.UserName);
                     var userSession = new UserLogin();
                     userSession.UserName = user.UserName;
+                    Session["UserName"] = user.Name.ToString();
+                    Session["IDName"] = user.ID.ToString();
                     userSession.UserID = user.ID;
-                    Session.Add(CommonConstants.USER_SESSION,userSession);
+                    Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");
                 }
                 else if(result == 0)
@@ -55,8 +59,12 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
 
             }
-            //TempData["UserName"] = model.UserName;
             return View("Index");
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));
         }
     }
 }
