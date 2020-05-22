@@ -49,13 +49,10 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return true;
         }
-        public IEnumerable<Staff> ListAllPaging(string SearchString, int page, int pageSize)
+        public IEnumerable<Staff> ListAllPaging(int page, int pageSize)
         {
             IQueryable<Staff> model = context.Staffs;
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                model = model.Where(x => x.Name.Contains(SearchString) || x.UserName.Contains(SearchString));
-            }
+            
             return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
         public Staff GetByName(string UserName)

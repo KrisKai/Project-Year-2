@@ -20,13 +20,10 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return message.ID_Message;
         }
-        public IEnumerable<Message> ListAllPaging(string SearchString, int page, int pageSize)
+        public IEnumerable<Message> ListAllPaging(int page, int pageSize)
         {
             IQueryable<Message> model = context.Messages;
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                model = model.Where(x => x.Name.Contains(SearchString));
-            }
+            
             return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
     }

@@ -52,13 +52,10 @@ namespace Project_Year_2.Models.Dao
         {
             return context.FoodTables.Find(ID);
         }
-        public IEnumerable<FoodTable> ListAllPaging(string SearchString, int page, int pageSize)
+        public IEnumerable<FoodTable> ListAllPaging( int page, int pageSize)
         {
             IQueryable<FoodTable> model = context.FoodTables;
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                model = model.Where(x => x.LastName.Contains(SearchString));
-            }
+            
             return model.OrderByDescending(x => x.LastName).ToPagedList(page, pageSize);
         }
         

@@ -13,11 +13,10 @@ namespace Project_Year_2.Areas.Admin.Controllers
     public class MenuController : BaseController
     {
         // GET: Admin/Menu
-        public ActionResult Index(string SearchString, int page = 1, int pageSize = 10)
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
             var dao = new MenuDao();
-            var model = dao.ListAllPaging(SearchString, page, pageSize);
-            ViewBag.SearchString = SearchString;
+            var model = dao.ListAllPaging( page, pageSize);
             return View(model);
         }
         [HttpGet]

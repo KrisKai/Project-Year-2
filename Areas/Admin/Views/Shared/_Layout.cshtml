@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -18,6 +19,8 @@
     <!-- Custom styles for this template-->
     <link href="~/Assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <link href="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -33,9 +36,9 @@
             <div id="content">
 
                 @RenderPage("_Topbar.cshtml")
-                @if(TempData["AlertMessage"] != null)
+                @if (TempData["AlertMessage"] != null)
                 {
-                    <div id = "AlertBox" class="alert @TempData["AlertType"] hide">
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide">
                         @TempData["AlertMessage"]
                     </div>
                 }
@@ -92,6 +95,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="~/Assets/Admin/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Assets/Admin/js/demo/datatables-demo.js"></script>
 
     @RenderSection("jsFooter", required: false);
 </body>
