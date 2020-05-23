@@ -33,7 +33,9 @@ namespace Project_Year_2.Models.Dao
                 user.PhoneNumber = entity.PhoneNumber;
                 user.IdentityID = entity.IdentityID;
                 user.Address = entity.Address;
-                user.role = entity.role;
+                user.BirthDay = entity.BirthDay;
+                user.Email = entity.Email;
+                
                 context.SaveChanges();
                 return true;
             }

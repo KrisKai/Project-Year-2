@@ -10,11 +10,12 @@
 
 @model PagedList.IPagedList<Project_Year_2.Models.EF.Message>
 
+@section jsFooter{
+    <script src="~/Assets/Admin/js/Controller/MessageController.js"></script>
+}
 
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Bảng thông tin</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -31,21 +32,23 @@
                             <th>Email</th>
                             <th>Lời nhắn</th>
                             <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody>
-                       @if (Model != null)
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
                             {
-                                foreach (var item in Model)
-                                {
-                                    <tr id="row_@item.ID_Message">
-                                        <td>@item.Name</td>
-                                        <td>@item.Email</td>
-                                        <td>@item.Message1</td>
-                                        <td>@item.CreatedDate</td>
-                                    </tr>
-                                }
+                        <tr id="row_@item.ID_Message">
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Message1</td>
+                            <td>@item.CreatedDate</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID_Message">@(item.Status ? "Chờ" : "Xong")</a></td>
+                        </tr>
                             }
+                        }
                     </tbody>
                 </table>
             </div>

@@ -20,7 +20,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Thông tin của Quản lí</h6>
         </div>
         <div class="card-body">
-            
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" cellspacing="0">
                     <thead>
@@ -31,7 +31,11 @@
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
                             <th>CMND</th>
-                            <th>Vai trò</th>
+                            <th>Ảnh</th>
+                            <th>Ngày sinh</th>
+                            <th>Ngày tạo</th>
+                            <th>Email</th>
+                            <th>Người tạo</th>
                             <th>Trạng thái</th>
                         </tr>
                     </thead>
@@ -40,17 +44,21 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr id="row_@item.ID">
-                                    <td>@item.UserName</td>
-                                    <td>@item.Password</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.PhoneNumber</td>
-                                    <td>@item.Address</td>
-                                    <td>@item.IdentityID</td>
-                                    <td>@item.role</td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
-                                   
-                                </tr>
+                        <tr id="row_@item.ID">
+                            <td>@item.UserName</td>
+                            <td>@item.Password</td>
+                            <td>@item.Name</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Address</td>
+                            <td>@item.IdentityID</td>
+                            <td>@item.Avatar</td>
+                            <td>@item.BirthDay</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.Email</td>
+                            <td>@item.CreatedBy</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+
+                        </tr>
                             }
                         }
                     </tbody>

@@ -36,6 +36,7 @@
                             <th>Ngày</th>
                             <th>Giờ</th>
                             <th>Lời nhắn</th>
+                            <th>Trạng thái</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                     </thead>
@@ -53,7 +54,7 @@
                                         <td>@item.Date</td>
                                         <td>@item.Time</td>
                                         <td>@item.Message</td>
-
+                                        <td><a href="#" class="btn-active" data-id="@item.ID_Table">@(item.Status ? "Chờ" : "Xong")</a></td>
                                         <td>
                                             <a href="Edit/@item.ID_Table">Sửa</a>
                                             |

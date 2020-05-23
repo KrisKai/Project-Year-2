@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -45,6 +46,20 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
+                    if (staff.AvatarFile != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(staff.AvatarFile.FileName);
+                        string extension = Path.GetExtension(staff.AvatarFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        staff.Avatar = "~/Assets/Admin/img/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
+                        staff.AvatarFile.SaveAs(fileName);
+                    }
+                    else
+                    {
+                        staff.Avatar = "~/Assets/Admin/img/Default_Avatar.png";
+                        
+                    }
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(staff.Password);
                     staff.Password = encryptMd5Pass;
                     long id = dao.Insert(staff);
@@ -99,6 +114,15 @@ namespace Project_Year_2.Areas.Admin.Controllers
         {
             new StaffDao().Delete(ID);
             return RedirectToAction("Home");
+        }
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new StaffDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
         }
     }
 }

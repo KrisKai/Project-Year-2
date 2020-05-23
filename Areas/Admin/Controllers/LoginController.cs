@@ -37,6 +37,9 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     userSession.UserName = user.UserName;
                     Session["UserName"] = user.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
+                    var image = user.Avatar.ToString();
+                    image = image.Substring(1);
+                    Session["Avatar"] = image;
                     userSession.UserID = user.ID;
                     Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");

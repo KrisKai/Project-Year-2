@@ -177,6 +177,7 @@
                                 </div>
 
                                 @Html.HiddenFor(x => x.CreatedDate, new { @Value = @DateTime.Now.ToShortDateString() })
+                                @Html.HiddenFor(model => model.Status, new { @Value = "False" })
 
                                 <div class="row">
                                     <div class="col-md-12 form-group">

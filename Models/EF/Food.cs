@@ -26,7 +26,7 @@ namespace Project_Year_2.Models.EF
         public string ImagePath { get; set; }
 
         public bool Status { get; set; }
-        [NotMapped] 
+        [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
     }
 }

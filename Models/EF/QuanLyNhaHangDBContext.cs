@@ -32,11 +32,23 @@ namespace Project_Year_2.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
-                .Property(e => e.PhoneNumber)
+                .Property(e => e.Name)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Avatar)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
                 .Property(e => e.IdentityID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Food>()
@@ -88,7 +100,7 @@ namespace Project_Year_2.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Staff>()
-                .Property(e => e.PhoneNumber)
+                .Property(e => e.Avatar)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Staff>()
@@ -97,6 +109,10 @@ namespace Project_Year_2.Models.EF
 
             modelBuilder.Entity<Staff>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Staff>()
+                .Property(e => e.CreatedBy)
                 .IsUnicode(false);
         }
     }

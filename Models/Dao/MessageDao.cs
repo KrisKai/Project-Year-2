@@ -26,5 +26,12 @@ namespace Project_Year_2.Models.Dao
             
             return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
+        public bool ChangeStatus(long id)
+        {
+            var message = context.Messages.Find(id);
+            message.Status = !message.Status;
+            context.SaveChanges();
+            return message.Status;
+        }
     }
 }

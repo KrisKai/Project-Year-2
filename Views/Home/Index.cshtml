@@ -566,6 +566,7 @@
                         @Html.ValidationMessageFor(model => model.Message1, "", new { @class = "text-danger" })
                     </div>
                     @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
+                    @Html.HiddenFor(model => model.Status, new { @Value = "False" })
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-lg" value="Gửi lời nhắn">
                     </div>

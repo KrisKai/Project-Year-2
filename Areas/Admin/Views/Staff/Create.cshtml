@@ -29,7 +29,7 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control ", placeholder = "Tài khoản" })
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control " })
                                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Mật khẩu" })
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Họ và Tên"  })
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -53,15 +53,15 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder="Số điện thoại" })
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.IdentityID, htmlAttributes: new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.IdentityID, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.IdentityID, new { @class = "form-control", placeholder = "CMND" })
+                                    @Html.TextBoxFor(model => model.IdentityID, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.IdentityID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -69,15 +69,23 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Địa chỉ" })
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.BirthDay, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.BirthDay, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -85,11 +93,12 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control col-md-1",@checked= "checked" })
+                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control col-md-1", @checked = "checked" })
                                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
+                            @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
+                            @Html.HiddenFor(model => model.CreatedBy, new { @Value = Session["UserName"].ToString() })
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-6 ">
                                     <input type="submit" value="Đăng kí" class="btn btn-default bg-primary text-white" />

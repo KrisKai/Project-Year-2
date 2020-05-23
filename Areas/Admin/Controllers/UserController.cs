@@ -3,6 +3,7 @@ using Project_Year_2.Models.Dao;
 using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,6 +44,19 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
+                    if (account.AvatarFile != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(account.AvatarFile.FileName);
+                        string extension = Path.GetExtension(account.AvatarFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        account.Avatar = "~/Assets/Admin/img/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
+                        account.AvatarFile.SaveAs(fileName);
+                    }
+                    else
+                    {
+                        account.Avatar = "~/Assets/Admin/img/Default_Avatar.png";
+                    }
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
                     account.Password = encryptMd5Pass;
                     long id = dao.Insert(account);
@@ -104,12 +118,33 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 status = result
             });
         }
-        
-        [HttpGet]
         public new ActionResult Profile()
         {
             int id = int.Parse(Session["IDName"].ToString());
             var account = new UserDao().ViewDetail(id);
+            return View(account);
+        }
+        [HttpPost]
+        public new ActionResult Profile(Account account)
+        {
+            QuanLyNhaHangDBContext context = new QuanLyNhaHangDBContext();
+            if (account.AvatarFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(account.AvatarFile.FileName);
+                string extension = Path.GetExtension(account.AvatarFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                account.Avatar = "~/Assets/Admin/img/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
+                account.AvatarFile.SaveAs(fileName);
+            }
+            int id = int.Parse(Session["IDName"].ToString());
+            var dao = context.Accounts.Find(id);
+            dao.Avatar = account.Avatar;
+            
+            var image = account.Avatar.ToString();
+            image = image.Substring(1);
+            Session["Avatar"] = image;
+            context.SaveChanges();
             return View(account);
         }
 
@@ -134,12 +169,12 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 var result = dao.Update(account);
                 if (result)
                 {
-                    SetAlert("Cập nhập tài khoản thành công", "success");
-                    return RedirectToAction("Home", "User");
+                    SetAlert("Cập nhập tài khoản cá nhân thành công", "success");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                    ModelState.AddModelError("", "Cập nhập không thành công");
                 }
             }
             return View("Home");

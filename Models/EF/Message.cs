@@ -22,5 +22,7 @@ namespace Project_Year_2.Models.EF
         public string Message1 { get; set; }
 
         public DateTime? CreatedDate { get; set; }
+
+        public bool Status { get; set; }
     }
 }

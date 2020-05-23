@@ -7,6 +7,10 @@
 
 @model PagedList.IPagedList<Project_Year_2.Models.EF.Staff>
 
+@section jsFooter{
+    <script src="~/Assets/Admin/js/Controller/StaffController.js"></script>
+}
+
 <div class="container-fluid">
 
     <!-- DataTales Example -->
@@ -21,12 +25,15 @@
                     <thead>
                         <tr>
                             <th>Tài khoản</th>
-                            <th>Mật khẩu</th>
                             <th>Họ và Tên</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
                             <th>CMND</th>
                             <th>Email</th>
+                            <th>Ngày sinh</th>
+                            <th>Ngày tạo</th>
+                            <th>Người tạo</th>
+                            <th>Trạng thái</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                     </thead>
@@ -35,25 +42,28 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr id="row_@item.ID_Staff">
-                                    <td>@item.UserName</td>
-                                    <td>@item.Password</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.PhoneNumber</td>
-                                    <td>@item.Address</td>
-                                    <td>@item.IdentityID</td>
-                                    <td>@item.Email</td>
-                                    <td>
-                                        <a href="Edit/@item.ID_Staff">Sửa</a>
-                                        |
-                                        @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_Staff }, new AjaxOptions
-                                   {
-                                       Confirm = "Bạn có muốn xóa tài khoản này không?",
-                                       OnComplete = "$('#row_" + @item.ID_Staff + "').remove()",
-                                       HttpMethod = "Delete"
-                                   })
-                                    </td>
-                                </tr>
+                        <tr id="row_@item.ID_Staff">
+                            <td>@item.UserName</td>
+                            <td>@item.Name</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Address</td>
+                            <td>@item.IdentityID</td>
+                            <td>@item.Email</td>
+                            <td>@item.BirthDay</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CreatedBy</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID_Staff">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td>
+                                <a href="Edit/@item.ID_Staff">Sửa</a>
+                                |
+                                @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_Staff }, new AjaxOptions
+                           {
+                               Confirm = "Bạn có muốn xóa tài khoản này không?",
+                               OnComplete = "$('#row_" + @item.ID_Staff + "').remove()",
+                               HttpMethod = "Delete"
+                           })
+                            </td>
+                        </tr>
                             }
                         }
                     </tbody>

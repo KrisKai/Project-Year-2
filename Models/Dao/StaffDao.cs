@@ -34,6 +34,7 @@ namespace Project_Year_2.Models.Dao
                 user.IdentityID = entity.IdentityID;
                 user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.BirthDay = entity.BirthDay;
                 context.SaveChanges();
                 return true;
             }
