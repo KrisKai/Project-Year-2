@@ -1,5 +1,4 @@
-﻿
-<!-- Topbar -->
+﻿<!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
@@ -155,10 +154,13 @@
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                </a>
+                <p>
+                    <a href="https://colorlib.com/" target="_blank" class="dropdown-item" data-toggle="modal" data-target="#logModal">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Activity log
+                    </a>
+                </p>
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/Login/Logout" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -170,4 +172,15 @@
     </ul>
 
 </nav>
-<!-- End of Topbar -->
+<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-lg-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
