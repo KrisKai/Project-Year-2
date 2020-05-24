@@ -98,5 +98,19 @@ namespace Project_Year_2.Models.Dao
         {
             return context.Accounts.Count(x => x.UserName == username) > 0;
         }
+        public bool UpdateAvatar(int id,Account account)
+        {
+            try
+            {
+                var dao = context.Accounts.Find(id);
+                dao.Avatar = account.Avatar;
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

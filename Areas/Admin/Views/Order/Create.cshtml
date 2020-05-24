@@ -23,17 +23,17 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.FirstName,  new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control"  })
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.LastName,  new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.LastName,  new { @class = "form-control" } )
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Email,  new { @class = "form-control" } )
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @type = "email" })
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -49,15 +49,15 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.PeopleCount, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.PeopleCount,  new { @class = "form-control" } )
+                                    @Html.TextBoxFor(model => model.PeopleCount, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.PhoneNumber,  new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" } )
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @type = "number" })
                                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -65,26 +65,29 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Date,  new { @class = "form-control" } )
+                                    @Html.TextBoxFor(model => model.Date, new { @class = "form-control", @type = "date" })
                                     @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Time,new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.Time, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Time,new { @class = "form-control"  })
+                                    @Html.TextBoxFor(model => model.Time, new { @class = "form-control", @type = "time" })
                                     @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Message,  new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.Message, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
                                     @Html.TextAreaFor(model => model.Message, new { @class = "form-control ", @id = "m_message", @cols = "30", @rows = "7" })
                                     @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+
+                            @Html.HiddenFor(model => model.Status, new { @Value = "True" })
+                            @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-6 ">

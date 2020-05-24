@@ -127,7 +127,6 @@ namespace Project_Year_2.Areas.Admin.Controllers
         [HttpPost]
         public new ActionResult Profile(Account account)
         {
-            QuanLyNhaHangDBContext context = new QuanLyNhaHangDBContext();
             if (account.AvatarFile != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(account.AvatarFile.FileName);
@@ -138,13 +137,18 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 account.AvatarFile.SaveAs(fileName);
             }
             int id = int.Parse(Session["IDName"].ToString());
-            var dao = context.Accounts.Find(id);
-            dao.Avatar = account.Avatar;
-            
+            var user = new UserDao().UpdateAvatar(id, account);
+            if (user)
+            {
+                SetAlert("Cập nhập ảnh đại diện thành công", "success");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+            }
             var image = account.Avatar.ToString();
             image = image.Substring(1);
             Session["Avatar"] = image;
-            context.SaveChanges();
             return View(account);
         }
 

@@ -556,7 +556,7 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label sr-only" })
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", id = "email" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", id = "email", @type = "email" })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
 

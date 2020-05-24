@@ -126,7 +126,7 @@
                                 <div class="row">
                                     <div class="col-md-12 form-group">
                                         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control col-md-10", @id = "m_email" })
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control col-md-10", @id = "m_email", @type = "email" })
                                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control col-md-10", @id = "m_phone" })
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control col-md-10", @type = "number" })
                                         @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
