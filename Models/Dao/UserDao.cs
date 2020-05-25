@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PagedList;
 
 namespace Project_Year_2.Models.Dao
 {
@@ -51,11 +50,9 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return true;
         }
-        public IEnumerable<Account> ListAllPaging( int page, int pageSize)
-        {
-            IQueryable<Account> model = context.Accounts;
-            
-            return model.OrderByDescending(x => x.Name).ToPagedList(page,pageSize);
+        public List<Account> ListAll()
+        {   
+            return context.Accounts.OrderBy(x => x.Name).ToList();
         }
         public Account GetByName(string UserName)
         {

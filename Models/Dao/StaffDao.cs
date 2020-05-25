@@ -1,5 +1,4 @@
-﻿using PagedList;
-using Project_Year_2.Models.EF;
+﻿using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,11 +49,9 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return true;
         }
-        public IEnumerable<Staff> ListAllPaging(int page, int pageSize)
-        {
-            IQueryable<Staff> model = context.Staffs;
-            
-            return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+        public List<Staff> ListAll()
+        {   
+            return context.Staffs.OrderBy(x => x.Name).ToList();
         }
         public Staff GetByName(string UserName)
         {

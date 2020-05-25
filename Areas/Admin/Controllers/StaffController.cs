@@ -12,16 +12,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
     public class StaffController : BaseController
     {
         // GET: Admin/Guest
-        public ActionResult Home( int page = 1, int pageSize = 10)
+        public ActionResult Home( )
         {
             var dao = new StaffDao();
-            var model = dao.ListAllPaging( page, pageSize);
+            var model = dao.ListAll();
             return View(model);
         }
-        public ActionResult Index( int page = 1, int pageSize = 10)
+        public ActionResult Index()
         {
             var dao = new StaffDao();
-            var model = dao.ListAllPaging( page, pageSize);
+            var model = dao.ListAll();
             return View(model);
         }
         [HttpGet]

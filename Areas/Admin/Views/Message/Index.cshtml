@@ -4,11 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-@using PagedList;
-@using PagedList.Mvc;
-
-@model PagedList.IPagedList<Project_Year_2.Models.EF.Message>
+@model IEnumerable<Project_Year_2.Models.EF.Message>
 
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/MessageController.js"></script>

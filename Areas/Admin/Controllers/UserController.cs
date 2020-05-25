@@ -4,8 +4,6 @@ using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Project_Year_2.Areas.Admin.Controllers
@@ -13,16 +11,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Home(int page = 1, int pageSize = 10)
+        public ActionResult Home()
         {
             var dao = new UserDao();
-            var model = dao.ListAllPaging( page, pageSize);
+            var model = dao.ListAll();
             return View(model);
         }
-        public ActionResult Index( int page = 1, int pageSize = 10)
+        public ActionResult Index( )
         {
             var dao = new UserDao();
-            var model = dao.ListAllPaging(page, pageSize);
+            var model = dao.ListAll();
             return View(model);
         }
         [HttpGet]

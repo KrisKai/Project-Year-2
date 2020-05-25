@@ -4,10 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-@using PagedList;
-@using PagedList.Mvc;
-@model PagedList.IPagedList<Project_Year_2.Models.EF.FoodTable>
+@model IEnumerable<Project_Year_2.Models.EF.FoodTable>
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/MenuController.js"></script>
 }

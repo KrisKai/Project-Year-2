@@ -1,5 +1,4 @@
-﻿using PagedList;
-using Project_Year_2.Models.EF;
+﻿using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +19,9 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return message.ID_Message;
         }
-        public IEnumerable<Message> ListAllPaging(int page, int pageSize)
+        public List<Message> ListAll()
         {
-            IQueryable<Message> model = context.Messages;
-            
-            return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+            return context.Messages.OrderBy(x => x.Name).ToList();
         }
         public bool ChangeStatus(long id)
         {

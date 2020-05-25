@@ -1,5 +1,4 @@
-﻿using PagedList;
-using Project_Year_2.Models.EF;
+﻿using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,11 +49,9 @@ namespace Project_Year_2.Models.Dao
         {
             return context.Foods.Find(ID);
         }
-        public IEnumerable<Food> ListAllPaging( int page, int pageSize)
+        public List<Food> ListAll()
         {
-            IQueryable<Food> model = context.Foods;
-            
-            return model.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+            return context.Foods.OrderBy(x => x.Name).ToList();
         }
         public bool ChangeStatus(long id)
         {
