@@ -42,10 +42,19 @@
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                    @Html.DropDownList("Type",
+                                         new List<SelectListItem>
+                                        {
+                                            new SelectListItem { Text = "Bữa sáng", Value = "Breakfast" },
+                                            new SelectListItem { Text = "Bữa trưa",  Value = "Lunch" },
+                                            new SelectListItem { Text = "Bữa tối", Value = "Dinner" },
+
+                                        },
+                                         new { @class = "form-control"}
+                                         )
+                                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -63,6 +72,7 @@
                                     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            @Html.HiddenFor(model => model.Hot, new { @Value = "False" })
 
                             @Html.HiddenFor(model => model.Status, new { @Value = "True" })
 

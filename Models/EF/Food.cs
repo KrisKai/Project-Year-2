@@ -18,14 +18,16 @@ namespace Project_Year_2.Models.EF
 
         public string Description { get; set; }
 
-        [StringLength(100)]
-        public string Code { get; set; }
-
         public double? Price { get; set; }
 
         public string ImagePath { get; set; }
 
         public bool Status { get; set; }
+
+        [StringLength(100)]
+        public string Type { get; set; }
+        public bool Hot { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
     }

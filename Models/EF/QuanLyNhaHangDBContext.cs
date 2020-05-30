@@ -56,7 +56,7 @@ namespace Project_Year_2.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Food>()
-                .Property(e => e.Code)
+                .Property(e => e.Type)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Food>()

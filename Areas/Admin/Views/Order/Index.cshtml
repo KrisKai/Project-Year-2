@@ -42,7 +42,6 @@
                             {
                                 foreach (var item in Model)
                                 {
-                                    <tr id="row_@item.ID_Table">
                                         <td>@item.FirstName</td>
                                         <td>@item.LastName</td>
                                         <td>@item.Email</td>
@@ -62,7 +61,6 @@
                                            HttpMethod = "Delete"
                                        })
                                         </td>
-                                    </tr>
                                 }
                             }
                     </tbody>

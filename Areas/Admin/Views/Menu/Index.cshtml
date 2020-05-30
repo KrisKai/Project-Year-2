@@ -22,9 +22,10 @@
                         <tr>
                             <th>Tên món ăn</th>
                             <th>Mô tả</th>
-                            <th>Mã món</th>
                             <th>Đường dẫn ảnh</th>
                             <th>Giá tiền</th>
+                            <th>Loại</th>
+                            <th>Độ hot</th>
                             <th>Tình trạng</th>
                             <th>Chỉnh sửa</th>
                         </tr>
@@ -37,9 +38,10 @@
                                 <tr id="row_@item.ID_Food">
                                     <td>@item.Name</td>
                                     <td>@item.Description</td>
-                                    <td>@item.Code</td>
                                     <td>@item.ImagePath</td>
                                     <td>@item.Price</td>
+                                    <td>@item.Type</td>
+                                    <td><a href="#" class="btn-active" data-id="@item.ID_Food">@(item.Hot ? "Còn" : "Hết")</a></td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Food">@(item.Status ? "Còn" : "Hết")</a></td>
 
                                     <td>

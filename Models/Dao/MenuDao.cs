@@ -27,7 +27,7 @@ namespace Project_Year_2.Models.Dao
                 var food = context.Foods.Find(ID);
                 food.Name = entity.Name;
                 food.Price = entity.Price;
-                food.Code = entity.Code;
+                food.Type = entity.Type;
                 food.ImagePath = entity.ImagePath;
                 food.Description = entity.Description;
                 context.SaveChanges();

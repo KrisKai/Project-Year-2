@@ -11,13 +11,13 @@
         <div class="col-md-6 m-5 bg-light">
             <div class="panel panel-default">
                 <div class="panel-heading font-weight-bolder">
-                    Cập nhập thông tin nhân viên
+                    Cập nhập thông tin cá nhân
                     <hr />
                 </div>
                 <div class="panel-body">
 
                     <div class="shadow p-4 mb-4 bg-white">
-                        @using (Html.BeginForm("Setting", "User", FormMethod.Post))
+                        @using (Html.BeginForm("Index", "Setting", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
 

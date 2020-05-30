@@ -32,12 +32,11 @@
                         <th>Chỉnh sửa</th>
                     </tr>
                 </thead>
-                <tbody>
                     @if (Model != null)
                     {
                         foreach (var item in Model)
                         {
-                    <tr id="row_@item.ID">
+                    <tr>
                         <td>@item.UserName</td>
                         <td>@item.Name</td>
                         <td>@item.PhoneNumber</td>
@@ -62,7 +61,6 @@
                     </tr>
                         }
                     }
-                  </tbody> 
             </table>
         </div>
     </div>

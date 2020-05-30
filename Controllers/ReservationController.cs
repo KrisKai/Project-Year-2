@@ -38,9 +38,13 @@ namespace Project_Year_2.Controllers
                     content = content.Replace("{{Date}}", table.Date);
                     content = content.Replace("{{Time}}", table.Time);
                     var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+                    try
+                    {
 
-                    new MailHelper().SendMail(table.Email, "Đơn đặt bàn mới từ My Restaurant", content);
-                    new MailHelper().SendMail(toEmail, "Đơn đặt bàn mới từ My Restaurant", content);
+                        new MailHelper().SendMail(table.Email, "Đơn đặt bàn mới từ My Restaurant", content);
+                        new MailHelper().SendMail(toEmail, "Đơn đặt bàn mới từ My Restaurant", content);
+                    }
+                    catch (Exception) { }
                     return RedirectToAction("Index", "Home");
                 }
                 else

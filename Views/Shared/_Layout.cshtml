@@ -136,13 +136,14 @@
                                         @Html.DropDownList("PeopleCount",
                                          new List<SelectListItem>
                                         {
-                                            new SelectListItem { Text = "1 People", Value = "1" },
-                                            new SelectListItem { Text = "2 People",  Value = "2" },
-                                            new SelectListItem { Text = "3 People", Value = "3" },
-                                            new SelectListItem { Text = "4+ People", Value = "4+" },
+                                            new SelectListItem { Text = "1 Người", Value = "1" },
+                                            new SelectListItem { Text = "2 Người",  Value = "2" },
+                                            new SelectListItem { Text = "3 Người", Value = "3" },
+                                            new SelectListItem { Text = "4+ Người", Value = "4+" },
 
                                         },
-                                         new { @class = "form-control", id = "m_people" })
+                                         new { @class = "form-control", id = "m_people" }
+                                         )
 
                                         @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
 
