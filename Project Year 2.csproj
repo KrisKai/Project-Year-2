@@ -219,6 +219,7 @@
     <Content Include="Assets\Admin\img\DashBoard.jpg" />
     <Content Include="Assets\Admin\img\Default_Avatar.png" />
     <Content Include="Assets\Admin\img\undraw_posting_photo.svg" />
+    <Content Include="Assets\Admin\js\Controller\ChangeHot.js" />
     <Content Include="Assets\Admin\js\Controller\MenuController.js" />
     <Content Include="Assets\Admin\js\Controller\MessageController.js" />
     <Content Include="Assets\Admin\js\Controller\StaffController.js" />
@@ -2222,6 +2223,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Home\_Offer.cshtml" />
+    <Content Include="Views\Home\_Menu.cshtml" />
+    <Content Include="Views\Home\_News.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
