@@ -13,7 +13,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Home()
         {
-            var dao = new UserDao();
+            var dao = new ();
             var model = dao.ListAll();
             return View(model);
         }
