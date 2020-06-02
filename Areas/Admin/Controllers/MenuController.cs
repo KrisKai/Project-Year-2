@@ -26,7 +26,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create( Food food)
+        public ActionResult Create(Menu food)
         {
             
             if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     if (id > 0)
                     {
                         ViewBag.Success = "Đăng kí món ăn thành công";
-                        food = new Food();
+                        food = new Menu();
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View(menu);
         }
         [HttpPost]
-        public ActionResult Edit(Food food)
+        public ActionResult Edit(Menu food)
         {
             if (ModelState.IsValid)
             {
@@ -98,11 +98,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Index");
         }
-        [HttpDelete]
         public ActionResult Delete(int ID)
         {
+            Menu food = new MenuDao().ViewDetail(ID);
+            return View(food);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
+        {
             new MenuDao().Delete(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Home");
         }
         [HttpPost]
         public JsonResult ChangeStatus(long id)

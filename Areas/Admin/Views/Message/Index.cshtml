@@ -36,13 +36,13 @@
                         {
                             foreach (var item in Model)
                             {
-                        <tr id="row_@item.ID_Message">
-                            <td>@item.Name</td>
-                            <td>@item.Email</td>
-                            <td>@item.Message1</td>
-                            <td>@item.CreatedDate</td>
-                            <td><a href="#" class="btn-active" data-id="@item.ID_Message">@(item.Status ? "Chờ" : "Xong")</a></td>
-                        </tr>
+                            <tr id="row_@item.ID_Message">
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.Message1</td>
+                                <td>@item.CreatedDate</td>
+                                <td><a href="#" class="btn-active" data-id="@item.ID_Message">@(item.Status ? "Chờ" : "Xong")</a></td>
+                            </tr>
                             }
                         }
                     </tbody>
@@ -50,5 +50,4 @@
             </div>
         </div>
     </div>
-
 </div>

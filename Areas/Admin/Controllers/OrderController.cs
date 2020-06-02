@@ -24,7 +24,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FoodTable table)
+        public ActionResult Create(Order table)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View(table);
         }
         [HttpPost]
-        public ActionResult Edit(FoodTable table)
+        public ActionResult Edit(Order table)
         {
             if (ModelState.IsValid)
             {
@@ -70,11 +70,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Index");
         }
-        [HttpDelete]
         public ActionResult Delete(int ID)
         {
+            Order order = new OrderDao().ViewDetail(ID);
+            return View(order);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
+        {
             new OrderDao().Delete(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Home");
         }
     }
 }

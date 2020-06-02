@@ -14,17 +14,17 @@ namespace Project_Year_2.Models.Dao
         {
             context = new QuanLyNhaHangDBContext();
         }
-        public long Insert(Food food)
+        public long Insert(Menu food)
         {
-            context.Foods.Add(food);
+            context.Menus.Add(food);
             context.SaveChanges();
-            return food.ID_Food;
+            return food.ID_Menu;
         }
-        public bool Update(Food entity, int ID)
+        public bool Update(Menu entity, int ID)
         {
             try
             {
-                var food = context.Foods.Find(ID);
+                var food = context.Menus.Find(ID);
                 food.Name = entity.Name;
                 food.Price = entity.Price;
                 food.Type = entity.Type;
@@ -40,33 +40,33 @@ namespace Project_Year_2.Models.Dao
         }
         public bool Delete(int ID)
         {
-            var food = context.Foods.Find(ID);
-            context.Foods.Remove(food);
+            var food = context.Menus.Find(ID);
+            context.Menus.Remove(food);
             context.SaveChanges();
             return true;
         }
-        public Food ViewDetail(int ID)
+        public Menu ViewDetail(int ID)
         {
-            return context.Foods.Find(ID);
+            return context.Menus.Find(ID);
         }
-        public List<Food> ListAll()
+        public List<Menu> ListAll()
         {
-            return context.Foods.OrderBy(x => x.Name).ToList();
+            return context.Menus.ToList();
         }
         public bool ChangeStatus(long id)
         {
-            var food = context.Foods.Find(id);
+            var food = context.Menus.Find(id);
             food.Status = !food.Status;
             context.SaveChanges();
             return food.Status;
         }
         public bool CheckName(string name)
         {
-            return context.Foods.Count(x => x.Name == name) > 0;
+            return context.Menus.Count(x => x.Name == name) > 0;
         }
         public bool ChangeHot(long id)
         {
-            var food = context.Foods.Find(id);
+            var food = context.Menus.Find(id);
             food.Hot = !food.Hot;
             context.SaveChanges();
             return food.Status;

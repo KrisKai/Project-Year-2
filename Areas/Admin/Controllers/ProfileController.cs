@@ -15,11 +15,11 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult Index()
         {
             int id = int.Parse(Session["IDName"].ToString());
-            var account = new UserDao().ViewDetail(id);
+            var account = new AdminDao().ViewDetail(id);
             return View(account);
         }
         [HttpPost]
-        public ActionResult Index(Account account)
+        public ActionResult Index(Project_Year_2.Models.EF.Admin account)
         {
             if (account.AvatarFile != null)
             {
@@ -31,7 +31,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 account.AvatarFile.SaveAs(fileName);
             }
             int id = int.Parse(Session["IDName"].ToString());
-            var user = new UserDao().UpdateAvatar(id, account);
+            var user = new AdminDao().UpdateAvatar(id, account);
             if (user)
             {
                 SetAlert("Cập nhập ảnh đại diện thành công", "success");

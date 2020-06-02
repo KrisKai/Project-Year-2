@@ -6,8 +6,8 @@ namespace Project_Year_2.Models.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("FoodTable")]
-    public partial class FoodTable
+    [Table("Order")]
+    public partial class Order
     {
         [Key]
         public long ID_Table { get; set; }
@@ -37,6 +37,6 @@ namespace Project_Year_2.Models.EF
 
         public DateTime? CreatedDate { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new UserDao();
+                var dao = new AdminDao();
                 var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
                 
                 if (result == 1)
@@ -35,8 +35,9 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     var user = dao.GetByName(model.UserName);
                     var userSession = new UserLogin();
                     userSession.UserName = user.UserName;
-                    Session["UserName"] = user.Name.ToString();
+                    //Session["UserName"] = user.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
+                    Session["User"] = user.UserName.ToString();
                     var image = user.Avatar.ToString();
                     image = image.Substring(1);
                     Session["Avatar"] = image;

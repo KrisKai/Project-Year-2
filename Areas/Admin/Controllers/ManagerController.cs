@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Project_Year_2.Areas.Admin.Controllers
 {
-    public class UserController : BaseController
+    public class ManagerController : BaseController
     {
         // GET: Admin/User
         public ActionResult Home()
@@ -30,7 +30,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
         
         [HttpPost]
-        public ActionResult Create(Account account)
+        public ActionResult Create(Manager account)
         {
             if (ModelState.IsValid)
             {
@@ -61,11 +61,11 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     if (id > 0)
                     {
                         ViewBag.Success = "Đăng kí thành công";
-                        account = new Account();
+                        account = new Manager();
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Thêm tài khoản không thành công");
+                        ModelState.AddModelError("", "Thêm tài khoản thành công");
                     }
                 }                
             }
@@ -77,7 +77,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View(account);
         }
         [HttpPost]
-        public ActionResult Edit(Account account)
+        public ActionResult Edit(Manager account)
         {
             if (ModelState.IsValid)
             {
@@ -101,8 +101,14 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Home");
         }
-        [HttpDelete]
+        
         public ActionResult Delete(int ID)
+        {
+            Manager account = new UserDao().ViewDetail(ID);
+            return View(account);
+        }
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
         {
             new UserDao().Delete(ID);
             return RedirectToAction("Home");

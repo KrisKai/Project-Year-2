@@ -7,10 +7,9 @@ namespace Project_Year_2.Models.EF
     using System.Data.Entity.Spatial;
     using System.Web;
 
-    [Table("Account")]
-    public partial class Account
+    [Table("Manager")]
+    public partial class Manager
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
         [StringLength(50)]
@@ -44,7 +43,7 @@ namespace Project_Year_2.Models.EF
         public string CreatedBy { get; set; }
 
         public bool Status { get; set; }
-        [NotMapped] 
+        [NotMapped]
         public HttpPostedFileBase AvatarFile { get; set; }
     }
 }

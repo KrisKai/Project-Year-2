@@ -20,7 +20,7 @@ namespace Project_Year_2.Controllers
             return View("Index", "Home");
         }
         [HttpPost]
-        public ActionResult Create(FoodTable table)
+        public ActionResult Create(Order table)
         {
             if (ModelState.IsValid)
             {

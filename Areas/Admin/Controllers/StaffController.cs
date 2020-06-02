@@ -109,8 +109,13 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Home");
         }
-        [HttpDelete]
         public ActionResult Delete(int ID)
+        {
+            Staff staff = new StaffDao().ViewDetail(ID);
+            return View(staff);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
         {
             new StaffDao().Delete(ID);
             return RedirectToAction("Home");

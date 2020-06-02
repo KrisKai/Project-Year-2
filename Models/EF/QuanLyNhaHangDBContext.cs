@@ -12,83 +12,91 @@ namespace Project_Year_2.Models.EF
         {
         }
 
-        public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Bill> Bills { get; set; }
-        public virtual DbSet<Bill_Info> Bill_Info { get; set; }
-        public virtual DbSet<Food> Foods { get; set; }
-        public virtual DbSet<FoodTable> FoodTables { get; set; }
-        public virtual DbSet<MenuCategory> MenuCategories { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Bill_Infor> Bill_Infor { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Admin>()
                 .Property(e => e.UserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Admin>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
-                .Property(e => e.Name)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Admin>()
                 .Property(e => e.Avatar)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Bill_Infor>()
+                .HasMany(e => e.Menus)
+                .WithMany(e => e.Bill_Infor)
+                .Map(m => m.ToTable("Bill").MapLeftKey("ID_Bill_Infor").MapRightKey("ID_Menu"));
+
+            modelBuilder.Entity<Manager>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Manager>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Manager>()
+                .Property(e => e.Name)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Manager>()
+                .Property(e => e.Avatar)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Manager>()
                 .Property(e => e.IdentityID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Manager>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Account>()
+            modelBuilder.Entity<Manager>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Food>()
+            modelBuilder.Entity<Menu>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Food>()
-                .Property(e => e.Type)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Food>()
+            modelBuilder.Entity<Menu>()
                 .Property(e => e.ImagePath)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<FoodTable>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<FoodTable>()
-                .Property(e => e.PhoneNumber)
-                .IsFixedLength();
-
-            modelBuilder.Entity<FoodTable>()
-                .Property(e => e.Date)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<FoodTable>()
-                .Property(e => e.Time)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MenuCategory>()
-                .Property(e => e.MetaTitle)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MenuCategory>()
-                .Property(e => e.CreatedBy)
+            modelBuilder.Entity<Menu>()
+                .Property(e => e.Type)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Message>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.PhoneNumber)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Date)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Time)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Staff>()

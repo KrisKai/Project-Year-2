@@ -13,17 +13,17 @@ namespace Project_Year_2.Models.Dao
         {
             context = new QuanLyNhaHangDBContext();
         }
-        public long Insert(FoodTable table)
+        public long Insert(Order table)
         {
-            context.FoodTables.Add(table);
+            context.Orders.Add(table);
             context.SaveChanges();
             return table.ID_Table;
         }
-        public bool Update(FoodTable entity, int ID)
+        public bool Update(Order entity, int ID)
         {
             try
             {
-                var table = context.FoodTables.Find(ID);
+                var table = context.Orders.Find(ID);
                 table.FirstName = entity.FirstName;
                 table.LastName = entity.LastName;
                 table.PeopleCount = entity.PeopleCount;
@@ -42,18 +42,18 @@ namespace Project_Year_2.Models.Dao
         }
         public bool Delete(int ID)
         {
-            var table = context.FoodTables.Find(ID);
-            context.FoodTables.Remove(table);
+            var table = context.Orders.Find(ID);
+            context.Orders.Remove(table);
             context.SaveChanges();
             return true;
         }
-        public FoodTable ViewDetail(int ID)
+        public Order ViewDetail(int ID)
         {
-            return context.FoodTables.Find(ID);
+            return context.Orders.Find(ID);
         }
-        public List<FoodTable> ListAll()
+        public List<Order> ListAll()
         {
-            return context.FoodTables.OrderBy(x => x.LastName).ToList();
+            return context.Orders.ToList();
         }
         
     }

@@ -13,17 +13,17 @@ namespace Project_Year_2.Models.Dao
         {
             context = new QuanLyNhaHangDBContext();
         }
-        public long Insert(Account account)
+        public long Insert(Manager account)
         {
-            context.Accounts.Add(account);
+            context.Managers.Add(account);
             context.SaveChanges();
             return account.ID;
         }
-        public bool Update(Account entity)
+        public bool Update(Manager entity)
         {
             try
             {
-                var user = context.Accounts.Find(entity.ID);
+                var user = context.Managers.Find(entity.ID);
                 user.Name = entity.Name;
                 if (!string.IsNullOrEmpty(entity.Password))
                 {
@@ -45,26 +45,26 @@ namespace Project_Year_2.Models.Dao
         }
         public bool Delete(int ID)
         {
-            var user = context.Accounts.Find(ID);
-            context.Accounts.Remove(user);
+            var user = context.Managers.Find(ID);
+            context.Managers.Remove(user);
             context.SaveChanges();
             return true;
         }
-        public List<Account> ListAll()
+        public List<Manager> ListAll()
         {   
-            return context.Accounts.OrderBy(x => x.Name).ToList();
+            return context.Managers.ToList();
         }
-        public Account GetByName(string UserName)
+        public Manager GetByName(string UserName)
         {
-            return context.Accounts.FirstOrDefault(x=>x.UserName == UserName);
+            return context.Managers.FirstOrDefault(x=>x.UserName.CompareTo(UserName) == 0);
         }
-        public Account ViewDetail(int ID)
+        public Manager ViewDetail(int ID)
         {
-            return context.Accounts.Find(ID);
+            return context.Managers.Find(ID);
         }
-        public int Login(string useName, string passWord)
+        public int Login(string userName, string passWord)
         {
-            var result = context.Accounts.FirstOrDefault(x => x.UserName == useName);
+            var result = context.Managers.FirstOrDefault(x => x.UserName.CompareTo(userName) == 0);
             if (result == null)
             {
                 return 0;
@@ -86,20 +86,20 @@ namespace Project_Year_2.Models.Dao
         }
         public bool ChangeStatus(long id)
         {
-            var user = context.Accounts.Find(id);
+            var user = context.Managers.Find(id);
             user.Status = !user.Status;
             context.SaveChanges();
             return user.Status;
         }
         public bool CheckUserName(string username)
         {
-            return context.Accounts.Count(x => x.UserName == username) > 0;
+            return context.Managers.Count(x => x.UserName == username) > 0;
         }
-        public bool UpdateAvatar(int id,Account account)
+        public bool UpdateAvatar(int id,Manager account)
         {
             try
             {
-                var dao = context.Accounts.Find(id);
+                var dao = context.Managers.Find(id);
                 dao.Avatar = account.Avatar;
                 context.SaveChanges();
                 return true;
