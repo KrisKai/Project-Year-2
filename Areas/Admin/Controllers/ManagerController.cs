@@ -13,13 +13,13 @@ namespace Project_Year_2.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Home()
         {
-            var dao = new ();
+            var dao = new ManagerDao();
             var model = dao.ListAll();
             return View(model);
         }
         public ActionResult Index( )
         {
-            var dao = new UserDao();
+            var dao = new ManagerDao();
             var model = dao.ListAll();
             return View(model);
         }
@@ -35,7 +35,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
 
-                var dao = new UserDao();
+                var dao = new ManagerDao();
                 if (dao.CheckUserName(account.UserName))
                 {
                     ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
@@ -73,7 +73,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
         public ActionResult Edit(int ID)
         {
-            var account = new UserDao().ViewDetail(ID);
+            var account = new ManagerDao().ViewDetail(ID);
             return View(account);
         }
         [HttpPost]
@@ -82,7 +82,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
 
-                var dao = new UserDao();
+                var dao = new ManagerDao();
                 if (!string.IsNullOrEmpty(account.Password))
                 {
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
@@ -104,19 +104,19 @@ namespace Project_Year_2.Areas.Admin.Controllers
         
         public ActionResult Delete(int ID)
         {
-            Manager account = new UserDao().ViewDetail(ID);
+            Manager account = new ManagerDao().ViewDetail(ID);
             return View(account);
         }
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirmed(int ID)
         {
-            new UserDao().Delete(ID);
+            new ManagerDao().Delete(ID);
             return RedirectToAction("Home");
         }
         [HttpPost]
         public JsonResult ChangeStatus(long id)
         {
-            var result = new UserDao().ChangeStatus(id);
+            var result = new ManagerDao().ChangeStatus(id);
             return Json(new
             {
                 status = result

@@ -6,10 +6,10 @@ using System.Web;
 
 namespace Project_Year_2.Models.Dao
 {
-    public class UserDao
+    public class ManagerDao
     {
         QuanLyNhaHangDBContext context = null;  
-        public UserDao()
+        public ManagerDao()
         {
             context = new QuanLyNhaHangDBContext();
         }
