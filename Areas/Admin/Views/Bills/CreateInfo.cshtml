@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "CreateInfo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateInfo", "Bills", FormMethod.Post))
+{
+
+    <div>Bill</div>
+    @Html.DropDownList("ID_Bill", "")
+    <ul style="list-style-type:none">
+        @foreach (var item in ViewBag.Bill)
+        {
+            <li><input type="checkbox" name="ID_Menus" value="@item.ID_Menu" /> @item.Name</li>
+        }
+    </ul>
+    <input type="submit" value="Xác nhận" />
+}
+
+

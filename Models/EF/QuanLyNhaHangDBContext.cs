@@ -4,6 +4,7 @@ namespace Project_Year_2.Models.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Project_Year_2.Models.EF;
 
     public partial class QuanLyNhaHangDBContext : DbContext
     {
@@ -19,6 +20,7 @@ namespace Project_Year_2.Models.EF
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,11 +35,6 @@ namespace Project_Year_2.Models.EF
             modelBuilder.Entity<Admin>()
                 .Property(e => e.Avatar)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Bill_Infor>()
-                .HasMany(e => e.Menus)
-                .WithMany(e => e.Bill_Infor)
-                .Map(m => m.ToTable("Bill").MapLeftKey("ID_Bill_Infor").MapRightKey("ID_Menu"));
 
             modelBuilder.Entity<Manager>()
                 .Property(e => e.UserName)

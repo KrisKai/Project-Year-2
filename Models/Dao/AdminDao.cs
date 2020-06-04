@@ -8,7 +8,7 @@ namespace Project_Year_2.Models.Dao
 {
     public class AdminDao
     {
-        QuanLyNhaHangDBContext context = null;
+        private QuanLyNhaHangDBContext context = null;
         public AdminDao()
         {
             context = new QuanLyNhaHangDBContext();

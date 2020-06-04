@@ -29,6 +29,7 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
+
                                     @Html.TextBoxFor(model => model.UserName, new { @class = "form-control " })
                                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                 </div>

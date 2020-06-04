@@ -107,7 +107,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int ID)
         {
             new MenuDao().Delete(ID);
-            return RedirectToAction("Home");
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public JsonResult ChangeStatus(long id)

@@ -10,12 +10,6 @@ namespace Project_Year_2.Models.EF
     [Table("Menu")]
     public partial class Menu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Menu()
-        {
-            Bill_Infor = new HashSet<Bill_Infor>();
-        }
-
         [Key]
         public long ID_Menu { get; set; }
 
@@ -36,8 +30,5 @@ namespace Project_Year_2.Models.EF
         public string Type { get; set; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill_Infor> Bill_Infor { get; set; }
     }
 }

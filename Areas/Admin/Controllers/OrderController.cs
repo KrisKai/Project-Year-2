@@ -79,7 +79,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int ID)
         {
             new OrderDao().Delete(ID);
-            return RedirectToAction("Home");
+            return RedirectToAction("Index");
         }
     }
 }

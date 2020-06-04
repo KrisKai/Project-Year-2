@@ -24,6 +24,7 @@
                         <tr>
                             <th>Tài khoản</th>
                             <th>Họ và Tên</th>
+                            <th>Ảnh</th>
                             <th>Ngày tạo</th>
                             <th>Người tạo</th>
                             <th>Trạng thái</th>
@@ -38,6 +39,7 @@
                                 <tr id="row_@item.ID_Staff">
                                     <td>@item.UserName</td>
                                     <td>@item.Name</td>
+                                    <td>@item.Avatar</td>
                                     <td>@item.CreatedDate</td>
                                     <td>@item.CreatedBy</td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Staff">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
