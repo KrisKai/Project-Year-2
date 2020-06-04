@@ -104,7 +104,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(int ID_Bill, int[] ID_Menus)
+        public ActionResult CreateInfo(int ID_Bill, int[] ID_Menus)
         {
             foreach (int itemID in ID_Menus)
             {
