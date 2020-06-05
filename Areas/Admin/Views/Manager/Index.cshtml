@@ -1,9 +1,10 @@
 ﻿@{
     ViewBag.Title = "Manager";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    
+
 }
-@model IEnumerable<Project_Year_2.Models.EF.Manager>
+
+@model IEnumerable<Project_Year_2.Models.EF.Account>
 
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/UserController.js"></script>
@@ -34,14 +35,41 @@
                     {
                         <tr id="row_@item.ID">
                             <td>@item.UserName</td>
-                            <td>@item.Name</td>
-                            <td>@item.Avatar</td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    @item.User_Infor.Name
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    @item.User_Infor.Avatar
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
                             <td>@item.CreatedDate</td>
                             <td>@item.CreatedBy</td>
                             <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
                             <td>
-                                <a href="Edit/@item.ID">Sửa</a>
-                                |
+                                @if (@item.User_Infor == null)
+                                {
+                                    <a href="AddInfor/@item.ID">Thêm thông tin</a>
+                                    <span>|</span>
+                                }
+                                @if (@item.User_Infor != null)
+                                {
+                                    <a href="Edit/@item.ID">Sửa</a>
+                                    <span>|</span>
+                                }
+
                                 <a href="Delete/@item.ID">Xóa</a>
 
                             </td>

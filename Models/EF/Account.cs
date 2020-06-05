@@ -7,8 +7,8 @@ namespace Project_Year_2.Models.EF
     using System.Data.Entity.Spatial;
     using System.Web;
 
-    [Table("Manager")]
-    public partial class Manager
+    [Table("Account")]
+    public partial class Account
     {
         public long ID { get; set; }
 
@@ -18,32 +18,16 @@ namespace Project_Year_2.Models.EF
         [StringLength(50)]
         public string Password { get; set; }
 
-        [StringLength(10)]
-        public string Name { get; set; }
-
-        public string Avatar { get; set; }
-
-        public int? PhoneNumber { get; set; }
-
-        [StringLength(100)]
-        public string Address { get; set; }
-
-        [StringLength(30)]
-        public string IdentityID { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? BirthDay { get; set; }
-
-        [StringLength(50)]
-        public string Email { get; set; }
-
         public DateTime? CreatedDate { get; set; }
 
         [StringLength(50)]
         public string CreatedBy { get; set; }
 
+        [StringLength(30)]
+        public string Role { get; set; }
+
         public bool Status { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase AvatarFile { get; set; }
+
+        public virtual User_Infor User_Infor { get; set; }
     }
 }

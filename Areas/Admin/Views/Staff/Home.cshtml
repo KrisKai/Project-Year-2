@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<Project_Year_2.Models.EF.Staff>
+@model IEnumerable<Project_Year_2.Models.EF.Account>
 
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/StaffController.js"></script>
@@ -28,8 +28,8 @@
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
                             <th>CMND</th>
-                            <th>Email</th>
                             <th>Ngày sinh</th>
+                            <th>Email</th>
                             <th>Ngày tạo</th>
                             <th>Người tạo</th>
                             <th>Trạng thái</th>
@@ -40,19 +40,74 @@
                         {
                             foreach (var item in Model)
                             {
-                        <tr id="row_@item.ID_Staff">
-                            <td>@item.UserName</td>
-                            <td>@item.Password</td>
-                            <td>@item.Name</td>
-                            <td>@item.PhoneNumber</td>
-                            <td>@item.Address</td>
-                            <td>@item.IdentityID</td>
-                            <td>@item.Email</td>
-                            <td>@item.BirthDay</td>
-                            <td>@item.CreatedDate</td>
-                            <td>@item.CreatedBy</td>
-                            <td><a href="#" class="btn-active" data-id="@item.ID_Staff">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
-                        </tr>
+                                <tr id="row_@item.ID">
+                                    <td>@item.UserName</td>
+                                    <td>@item.Password</td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.Name
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.PhoneNumber
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.Address
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.IdentityID
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.BirthDay
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.User_Infor != null)
+                                        {
+                                            @item.User_Infor.Email
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.CreatedBy</td>
+                                    <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+
+                                </tr>
                             }
                         }
                     </tbody>

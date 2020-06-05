@@ -15,12 +15,12 @@ namespace Project_Year_2.Models.EF
 
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Bill_Infor> Bill_Infor { get; set; }
-        public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<User_Infor> User_Infors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,32 +36,44 @@ namespace Project_Year_2.Models.EF
                 .Property(e => e.Avatar)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<Account>()
                 .Property(e => e.UserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<Account>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<Account>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Role)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .HasOptional(e => e.User_Infor)
+                .WithRequired(e => e.Account);
+
+            modelBuilder.Entity<User_Infor>()
                 .Property(e => e.Name)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<User_Infor>()
                 .Property(e => e.Avatar)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<User_Infor>()
                 .Property(e => e.IdentityID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Manager>()
+            modelBuilder.Entity<User_Infor>()
                 .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Manager>()
-                .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Menu>()
@@ -96,29 +108,6 @@ namespace Project_Year_2.Models.EF
                 .Property(e => e.Time)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.UserName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.Password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.Avatar)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.IdentityID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Staff>()
-                .Property(e => e.CreatedBy)
-                .IsUnicode(false);
         }
     }
 }

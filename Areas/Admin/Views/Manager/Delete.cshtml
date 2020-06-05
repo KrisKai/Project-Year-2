@@ -1,4 +1,4 @@
-﻿@model Project_Year_2.Models.EF.Manager
+﻿@model Project_Year_2.Models.EF.Account
 
 @{
     ViewBag.Title = "Delete";
@@ -29,56 +29,56 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control ", @disabled = "disabled"  })
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control ", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.Name, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.Name, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.PhoneNumber, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.PhoneNumber, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.IdentityID, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.IdentityID, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.IdentityID, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.IdentityID, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.IdentityID, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.IdentityID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.Address, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.Address, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Address, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.BirthDay, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.BirthDay, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.BirthDay, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.BirthDay, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.BirthDay, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group font-weight-bold">
-                                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-10" })
+                                @Html.LabelFor(model => model.User_Infor.Email, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @disabled = "disabled" })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.User_Infor.Email, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group font-weight-bold">

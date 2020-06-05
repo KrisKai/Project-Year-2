@@ -1,4 +1,4 @@
-namespace Project_Year_2.Models.EF
+﻿namespace Project_Year_2.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -7,19 +7,12 @@ namespace Project_Year_2.Models.EF
     using System.Data.Entity.Spatial;
     using System.Web;
 
-    [Table("Staff")]
-    public partial class Staff
+    [Table("User_Infor")]
+    public partial class User_Infor
     {
-        [Key]
-        public long ID_Staff { get; set; }
+        public long ID { get; set; }
 
-        [StringLength(50)]
-        public string UserName { get; set; }
-
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        [StringLength(50)]
+        [StringLength(150)]
         public string Name { get; set; }
 
         public string Avatar { get; set; }
@@ -38,13 +31,8 @@ namespace Project_Year_2.Models.EF
         [StringLength(50)]
         public string Email { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
-
-        [StringLength(50)]
-        public string CreatedBy { get; set; }
-
-        public bool Status { get; set; }
         [NotMapped]
         public HttpPostedFileBase AvatarFile { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

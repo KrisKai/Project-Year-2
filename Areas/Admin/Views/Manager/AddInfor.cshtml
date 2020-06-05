@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "AddInfor";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model Project_Year_2.Models.EF.User_Infor
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-5 bg-light">
+            <div class="panel panel-default">
+                <div class="panel-heading font-weight-bolder">
+                    Thêm mới thông tin Quản lí
+                    <hr />
+                </div>
+                <div class="panel-body">
+
+                    <div class="shadow p-4 mb-4 bg-white">
+                        @using (Html.BeginForm("AddInfor", "Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control " })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.Avatar, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    <input type="file" name="AvatarFile" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.IdentityID, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.IdentityID, new { @class = "form-control ", @type = "number" })
+                                    @Html.ValidationMessageFor(model => model.IdentityID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control " })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control ", @type = "number" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.BirthDay, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.BirthDay, new { @class = "form-control ", @type = "date" })
+                                    @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @type = "email" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-6 ">
+                                    <input type="submit" value="Đăng kí" class="btn btn-default bg-primary text-white" />
+                                </div>
+                            </div>
+                            <div>
+                                @Html.ActionLink("Back to List", "Home")
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

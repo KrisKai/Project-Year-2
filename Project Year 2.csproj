@@ -2088,6 +2088,8 @@
     <Content Include="Areas\Admin\Views\Bills\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Show.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\CreateInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Manager\AddInfor.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\AddInfor.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2206,21 +2208,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Dao\AdminDao.cs" />
-    <Compile Include="Models\Dao\ManagerDao.cs" />
+    <Compile Include="Models\Dao\UserDao.cs" />
     <Compile Include="Models\Dao\BillDao.cs" />
     <Compile Include="Models\Dao\MessageDao.cs" />
     <Compile Include="Models\Dao\OrderDao.cs" />
-    <Compile Include="Models\Dao\StaffDao.cs" />
     <Compile Include="Models\Dao\MenuDao.cs" />
     <Compile Include="Models\EF\Admin.cs" />
     <Compile Include="Models\EF\Bill.cs" />
     <Compile Include="Models\EF\Bill_Infor.cs" />
-    <Compile Include="Models\EF\Manager.cs" />
+    <Compile Include="Models\EF\Account.cs" />
     <Compile Include="Models\EF\Menu.cs" />
     <Compile Include="Models\EF\Message.cs" />
     <Compile Include="Models\EF\Order.cs" />
     <Compile Include="Models\EF\QuanLyNhaHangDBContext.cs" />
-    <Compile Include="Models\EF\Staff.cs" />
+    <Compile Include="Models\EF\User_Infor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

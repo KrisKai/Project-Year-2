@@ -3,59 +3,79 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<Project_Year_2.Models.EF.Staff>
+@model IEnumerable<Project_Year_2.Models.EF.Account>
 
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/StaffController.js"></script>
 }
 
-<div class="container-fluid">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Thông tin của Nhân viên</h6>
+    </div>
+    <div class="card-body">
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Thông tin của Nhân viên</h6>
-        </div>
-        <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tài khoản</th>
+                        <th>Họ và Tên</th>
+                        <th>Ảnh</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Chỉnh sửa</th>
+                    </tr>
+                </thead>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr id="row_@item.ID">
+                            <td>@item.UserName</td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    @item.User_Infor.Name
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    @item.User_Infor.Avatar
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CreatedBy</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td>
+                                @if (@item.User_Infor == null)
+                                {
+                                    <a href="AddInfor/@item.ID">Thêm thông tin</a>
+                                    <span>|</span>
+                                }
+                                @if (@item.User_Infor != null)
+                                {
+                                    <a href="Edit/@item.ID">Sửa</a>
+                                    <span>|</span>
+                                }
+                                <a href="Delete/@item.ID">Xóa</a>
 
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Tài khoản</th>
-                            <th>Họ và Tên</th>
-                            <th>Ảnh</th>
-                            <th>Ngày tạo</th>
-                            <th>Người tạo</th>
-                            <th>Trạng thái</th>
-                            <th>Chỉnh sửa</th>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model != null)
-                        {
-                            foreach (var item in Model)
-                            {
-                                <tr id="row_@item.ID_Staff">
-                                    <td>@item.UserName</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.Avatar</td>
-                                    <td>@item.CreatedDate</td>
-                                    <td>@item.CreatedBy</td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID_Staff">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
-                                    <td>
-                                        <a href="Edit/@item.ID_Staff">Sửa</a>
-                                        |
-                                        <a href="Delete/@item.ID_Staff">Xóa</a>
-                                    </td>
-                                </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                }
+            </table>
         </div>
     </div>
-
 </div>
 
