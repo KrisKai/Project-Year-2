@@ -48,7 +48,15 @@
                             <td>
                                 @if (@item.User_Infor != null)
                                 {
-                                    @item.User_Infor.Avatar
+                                    if (item.User_Infor.Avatar != null)
+                                    {
+                                        <img class="img-profile rounded" src="@Url.Content(item.User_Infor.Avatar)" width="50" height="50">
+                                    }
+                                    else
+                                    {
+                                        <div>Trống</div>
+                                    }
+                                    
                                 }
                                 else
                                 {

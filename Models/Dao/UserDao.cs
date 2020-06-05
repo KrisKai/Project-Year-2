@@ -8,7 +8,7 @@ namespace Project_Year_2.Models.Dao
 {
     public class UserDao
     {
-        QuanLyNhaHangDBContext context = null;  
+        readonly QuanLyNhaHangDBContext context = null;  
         public UserDao()
         {
             context = new QuanLyNhaHangDBContext();

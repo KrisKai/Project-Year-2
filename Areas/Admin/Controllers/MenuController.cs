@@ -51,8 +51,8 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     long id = dao.Insert(food);
                     if (id > 0)
                     {
-                        ViewBag.Success = "Đăng kí món ăn thành công";
-                        food = new Menu();
+                        SetAlert("Đăng kí món ăn thành công", "success");
+                        return RedirectToAction("Index", "Menu");
                     }
                     else
                     {

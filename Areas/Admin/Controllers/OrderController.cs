@@ -33,7 +33,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 long id = dao.Insert(table);
                 if (id > 0)
                 {
-                    SetAlert("Cập nhập đơn đặt bàn thành công", "success");
+                    SetAlert("Thêm đơn đặt bàn thành công", "success");
                     return RedirectToAction("Index", "Order");
                 }
                 else

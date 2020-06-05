@@ -11,7 +11,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
 {
     public class BillsController : BaseController
     {
-        private QuanLyNhaHangDBContext db = new QuanLyNhaHangDBContext();
+        private readonly QuanLyNhaHangDBContext db = new QuanLyNhaHangDBContext();
         // GET: Admin/Bills
         // GET: Bills
         public ActionResult Index()
@@ -35,19 +35,19 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 var dao = new BillDao();
                 if (dao.CheckName(bill.BillName))
                 {
-                    ModelState.AddModelError("", "Tên món ăn đã tồn tại");
+                    ModelState.AddModelError("", "Tên Hóa đơn đã tồn tại");
                 }
                 else
                 {
                     long id = dao.Insert(bill);
                     if (id > 0)
                     {
-                        ViewBag.Success = "Đăng kí món ăn thành công";
-                        bill = new Bill_Infor();
+                        SetAlert("Đăng kí Hóa đơn thành công", "success");
+                        return RedirectToAction("Index", "Bills");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Thêm món ăn không thành công");
+                        ModelState.AddModelError("", "Thêm Hóa đơn không thành công");
                     }
                 }
 
@@ -70,12 +70,12 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 var result = dao.Update(bill, ID_Table_Get);
                 if (result)
                 {
-                    SetAlert("Cập nhập thực đơn thành công", "success");
+                    SetAlert("Cập nhập hóa đơn thành công", "success");
                     return RedirectToAction("Index", "Menu");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập thực đơn không thành công");
+                    ModelState.AddModelError("", "Cập nhập hóa đơn không thành công");
                 }
             }
             return View("Index");

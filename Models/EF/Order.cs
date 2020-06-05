@@ -37,6 +37,6 @@ namespace Project_Year_2.Models.EF
 
         public DateTime? CreatedDate { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

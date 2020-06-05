@@ -33,15 +33,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 if (result == 1)
                 {
                     var user = dao.GetByName(model.UserName);
-                    var userSession = new UserLogin();
-                    userSession.UserName = user.UserName;
+                    var userSession = new UserLogin
+                    {
+                        UserName = user.UserName,
+                        UserID = user.ID
+                    };
                     //Session["UserName"] = user.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
                     Session["User"] = user.UserName.ToString();
-                    var image = user.Avatar.ToString();
-                    image = image.Substring(1);
-                    Session["Avatar"] = image;
-                    userSession.UserID = user.ID;
+                    Session["Avatar"] = user.Avatar.ToString();
+                    
                     Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");
                 }

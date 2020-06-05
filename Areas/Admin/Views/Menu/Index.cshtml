@@ -40,7 +40,17 @@
                                     
                                     <td>@item.Name</td>
                                     <td>@item.Description</td>
-                                    <td>@item.ImagePath</td>
+                                    
+                                    <td>
+                                        @if (item.ImagePath != null)
+                                        {
+                                            <img class="img-profile rounded" src="@Url.Content(item.ImagePath)" width="250" height="250">
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
                                     <td>@item.Price</td>
                                     <td>@item.Type</td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Hot ? "Còn" : "Hết")</a></td>

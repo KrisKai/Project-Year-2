@@ -15,10 +15,10 @@
     <div class="row">
         <div class="col-lg-5 d-none d-lg-block text-center">
             <div>Ảnh đại diện</div>
-            <img src="@Session["Avatar"]" class="mx-auto" width="300" height="300" />
+            <img src="@Url.Content(Session["Avatar"].ToString())" class="mx-auto" width="300" height="300" />
             <br>
             <br>
-            <p><a href="https://colorlib.com/" target="_blank" class="btn btn-outline-dark btn-lg site-animate" data-toggle="modal" data-target="#changeAvatarModal">Thay đổi ảnh</a></p>
+            <p><a href="#" target="_blank" class="btn btn-outline-dark btn-lg site-animate" data-toggle="modal" data-target="#changeAvatarModal">Thay đổi ảnh</a></p>
         </div>
         <div class="col-lg-6">
             <div class="panel panel-default">
