@@ -15,7 +15,7 @@
                 <div class="panel-body">
 
                     <div class="shadow p-4 mb-4 bg-white">
-                        @using (Html.BeginForm("Edit", "Menu", FormMethod.Post))
+                        @using (Html.BeginForm("Edit", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
 
                             @Html.AntiForgeryToken()
