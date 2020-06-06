@@ -56,9 +56,10 @@
                                     <td>@item.CreatedDate</td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Table">@(item.Status ? "Chờ" : "Xong")</a></td>
                                     <td>
-                                        <a href="Edit/@item.ID_Table">Sửa</a>
+                                        @Html.ActionLink("Sửa", "Edit", "Order", new { id = @item.ID_Table }, null)
                                         |
-                                        <a href="Delete/@item.ID_Table">Xóa</a>
+                                        @Html.ActionLink("Xóa", "Delete", "Order", new { id = @item.ID_Table }, null)
+                                        
                                     </td>
                                 </tr>
                             }

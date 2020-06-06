@@ -33,7 +33,7 @@
             <div class="col-md-12">
                 <h1 class="site-heading site-animate mb-3">Welcome To Our restaurant</h1>
                 <h2 class="h5 site-subheading mb-5 site-animate">Come and eat well with our delicious &amp; healthy foods.</h2>
-                <p><a href="https://colorlib.com/" target="_blank" class="btn btn-outline-white btn-lg site-animate" data-toggle="modal" data-target="#reservationModal">Đặt Bàn</a></p>
+                <p><a href="#" target="_blank" class="btn btn-outline-white btn-lg site-animate" data-toggle="modal" data-target="#reservationModal">Đặt Bàn</a></p>
             </div>
         </div>
     </div>
@@ -147,11 +147,11 @@
             </div>
 
             <div class="col-md-7 mb-5 site-animate">
-                @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+                @using (Ajax.BeginForm("Create", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "ShowMessage" }))
                 {
                     @Html.AntiForgeryToken()
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-success" })
                     <div class="form-group">
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label sr-only" })
                         @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Tên" })
@@ -190,3 +190,16 @@
     </div>
 </section>
 <!-- END section -->
+<script type="text/javascript">
+
+        function ShowMessage(isRequestSuccessed) {
+            alert("Gửi lời nhắn thành công!");
+            if (isRequestSuccessed == false) {
+                $("#post-error").html("Nhập lỗi! Mời nhập lại!");
+            }
+            else
+            {
+                window.location.href = "/Home/Index";
+            }
+        }
+</script>

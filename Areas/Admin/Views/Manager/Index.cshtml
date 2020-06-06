@@ -69,16 +69,16 @@
                             <td>
                                 @if (@item.User_Infor == null)
                                 {
-                                    <a href="AddInfor/@item.ID">Thêm thông tin</a>
+                                    @Html.ActionLink("Thêm thông tin", "AddInfor", "Manager", new { id = @item.ID }, null)
                                     <span>|</span>
                                 }
                                 @if (@item.User_Infor != null)
                                 {
-                                    <a href="Edit/@item.ID">Sửa</a>
+                                    @Html.ActionLink("Sửa", "Edit", "Manager", new { id = @item.ID }, null)
                                     <span>|</span>
                                 }
-
-                                <a href="Delete/@item.ID">Xóa</a>
+                                @Html.ActionLink("Xóa", "Delete", "Manager", new { id = @item.ID }, null)
+                                
 
                             </td>
                         </tr>

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="~/Assets/Client/css/style.css">
 </head>
 <body data-spy="scroll" data-target="#site-navbar" data-offset="200">
-    
+
     @RenderBody()
 
     <footer class="site-footer site-bg-dark site-section">
@@ -104,8 +104,9 @@
                                 <small>ĐÓNG </small><span aria-hidden="true">&times;</span>
                             </button>
                             <h1 class="mb-4">Đặt Bàn Trước</h1>
-                            @using (Html.BeginForm("Create", "Reservation", FormMethod.Post))
+                            @using (Ajax.BeginForm("Create", "Reservation", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "Showmessage" }))
                             {
+
                                 @Html.AntiForgeryToken()
 
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -280,9 +281,23 @@
     <script src="~/Assets/Client/js/jquery.timepicker.min.js"></script>
 
     <script src="~/Assets/Client/js/jquery.animateNumber.min.js"></script>
-
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Assets/Client/js/main.js"></script>
 
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+    function Showmessage(isRequestSuccessed) {
+        alert("Đặt bàn thành công!");
+        if (isRequestSuccessed == false) {
+            $("#post-error").html("Nhập lỗi! Mời nhập lại!");
+        }
+        else {
+            window.location.href = "/Home/Index";
+        }
+    }
+</script>
+

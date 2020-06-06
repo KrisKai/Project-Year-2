@@ -57,9 +57,9 @@
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Status ? "Còn" : "Hết")</a></td>
 
                                     <td>
-                                        <a href="Menu/Edit/@item.ID_Menu">Sửa</a>
+                                        @Html.ActionLink("Sửa", "Edit", "Menu", new { id = @item.ID_Menu }, null)
                                         |
-                                        <a href="Menu/Delete/@item.ID_Menu">Xóa</a>
+                                        @Html.ActionLink("Xóa", "Delete", "Menu", new { id = @item.ID_Menu }, null)
                                     </td>
                                 </tr>
                             }
