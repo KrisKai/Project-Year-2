@@ -2090,6 +2090,7 @@
     <Content Include="Areas\Admin\Views\Bills\CreateInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\AddInfor.cshtml" />
     <Content Include="Areas\Admin\Views\Staff\AddInfor.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Delete.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2238,6 +2239,7 @@
     <Content Include="Views\Home\_Offer.cshtml" />
     <Content Include="Views\Home\_Menu.cshtml" />
     <Content Include="Views\Home\_News.cshtml" />
+    <Content Include="Views\Home\_Gallery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-namespace Project_Year_2.Models.EF
+﻿namespace Project_Year_2.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -13,16 +13,22 @@ namespace Project_Year_2.Models.EF
         public int ID_Message { get; set; }
 
         [StringLength(100)]
+
+        [Display(Name = "Tên khách hàng")]
         public string Name { get; set; }
 
         [StringLength(150)]
         public string Email { get; set; }
 
         [Column("Message")]
+
+        [Display(Name = "Lời nhắn")]
         public string Message1 { get; set; }
 
+        [Display(Name = "Ngày tạo")]
         public DateTime? CreatedDate { get; set; }
 
+        [Display(Name = "Tình trạng")]
         public bool Status { get; set; }
     }
 }

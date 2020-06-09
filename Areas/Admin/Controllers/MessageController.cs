@@ -1,4 +1,5 @@
 ﻿using Project_Year_2.Models.Dao;
+using Project_Year_2.Models.EF;
 using System;
 using System.Web.Mvc;
 
@@ -21,6 +22,19 @@ namespace Project_Year_2.Areas.Admin.Controllers
             {
                 status = result
             });
+
+        }
+        public ActionResult Delete(int ID)
+        {
+            Message message = new MessageDao().ViewDetail(ID);
+            return View(message);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
+        {
+            new MessageDao().Delete(ID);
+            return RedirectToAction("Index");
         }
     }
+
 }

@@ -13,19 +13,25 @@
         public long ID { get; set; }
 
         [StringLength(150)]
+        [Display(Name = "Họ và tên")]
         public string Name { get; set; }
 
+        [Display(Name = "Ảnh đại diện")]
         public string Avatar { get; set; }
 
+        [Display(Name = "Số điện thoại")]
         public int? PhoneNumber { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "CMND")]
         public string IdentityID { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Ngày sinh")]
         public DateTime? BirthDay { get; set; }
 
         [StringLength(50)]

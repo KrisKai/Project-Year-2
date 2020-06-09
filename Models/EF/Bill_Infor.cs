@@ -1,4 +1,4 @@
-namespace Project_Year_2.Models.EF
+﻿namespace Project_Year_2.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -12,14 +12,19 @@ namespace Project_Year_2.Models.EF
         public long ID_Bill { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Tên hóa đơn")]
         public string BillName { get; set; }
 
+        [Display(Name = "Tổng số tiền")]
         public int? Total { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Ngày tạo")]
         public DateTime? CreatedDate { get; set; }
 
         [StringLength(100)]
+
+        [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
     }
 }
