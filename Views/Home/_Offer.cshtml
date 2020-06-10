@@ -5,7 +5,7 @@
         <h2 class="display-4">Trong Mùa Hè Này</h2>
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="lead">Đây là những món ăn được ưa thích nhất tại thời điểm này.</p>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
                                 <h5 class="mt-0 h4">@item.Name</h5>
                                 <p class="mb-4">@item.Description</p>
 
-                                <p class="mb-0"><a href="#" target="_blank" class="btn btn-primary btn-sm" data-id="Modal-{{ $ViewBag.Menu->ID_Menu}}" data-toggle="modal" data-target="#Modal">Chi tiết</a></p>
+                                <p class="mb-0"><a href="#" target="_blank" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#@item.ID_Menu">Chi tiết</a></p>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
 {
     foreach (var item in ViewBag.Menu)
     {
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="@item.ID_Menu" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -52,11 +52,13 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <small>ĐÓNG </small><span aria-hidden="true">&times;</span>
                                 </button>
+                                <br />
+                                <h1 class="mb-4" style="text-align:center">
+                                    @item.Name
+                                </h1>
                                 <div class="media d-block mb-4 text-center site-media site-animate border-0">
                                     <img src=@Url.Content(item.ImagePath) alt="#" class="img-fluid">
                                     <div class="media-body p-md-5 p-4">
-                                        <h5 class="text-primary">$@item.Price</h5>
-                                        <h5 class="mt-0 h4">@item.Name</h5>
                                         <p class="mb-4">@item.Description</p>
 
                                     </div>
