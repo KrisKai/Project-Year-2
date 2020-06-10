@@ -27,163 +27,95 @@
         <div class="tab-content text-left">
             <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                 <div class="row">
-                    
+
                     @{ int counter = 0; }
-                        @if (ViewBag.Menu != null)
+                    @if (ViewBag.Menu != null)
+                    {
+                        foreach (var item in ViewBag.Menu)
                         {
-                            foreach (var item in ViewBag.Menu)
+                            if (item.Type == "Breakfast")
                             {
-                                if (item.Type == "Breakfast")
+                                if (counter != 0 && counter % 3 == 0)
                                 {
-                                    if (counter != 0 && counter % 3 == 0)
-                                    {
-                                        @:</div>
-                                        @:<div class="row">
-                                    }
-                                    <div class="col-md-6 site-animate">
-                        
-                                        <div class="media menu-item">
-                                            <img class="mr-3 img-fluid" src=@Url.Content(item.ImagePath) alt="#">
-                                            <div class="media-body">
-                                                <h5 class="mt-0">@item.Name</h5>
-                                                <p>@item.Description</p>
-                                                <h6 class="text-primary menu-price">@item.Price</h6>
-                                            </div>
+                                @:</div>
+                                @:<div class="row">
+                                }
+                                <div class="col-md-6 site-animate">
+
+                                    <div class="media menu-item">
+                                        <img class="mr-3 img-fluid" src=@Url.Content(item.ImagePath) alt="#">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">@item.Name</h5>
+                                            <p>@item.Description</p>
+                                            <h6 class="text-primary menu-price">$@item.Price</h6>
                                         </div>
                                     </div>
-                                }
+                                </div>
                             }
                         }
-                 </div>
+                    }
+                </div>
             </div>
             <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
                 <div class="row">
-                    <div class="col-md-6 site-animate">
 
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$14.50</h6>
-                            </div>
-                        </div>
+                    @{ int lunch = 0; }
+                    @if (ViewBag.Menu != null)
+                    {
+                        foreach (var item in ViewBag.Menu)
+                        {
+                            if (item.Type == "Lunch")
+                            {
+                                if (lunch != 0 && lunch % 3 == 0)
+                                {
+                                @:</div>
+                                @:<div class="row">
+                                }
+                                <div class="col-md-6 site-animate">
 
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Salted Fried Chicken</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$35.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$24.50</h6>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 site-animate">
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$18.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$35.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Salted Fried Chicken</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$12.50</h6>
-                            </div>
-                        </div>
-
-
-                    </div>
+                                    <div class="media menu-item">
+                                        <img class="mr-3 img-fluid" src=@Url.Content(item.ImagePath) alt="#">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">@item.Name</h5>
+                                            <p>@item.Description</p>
+                                            <h6 class="text-primary menu-price">$@item.Price</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-dinner" role="tabpanel" aria-labelledby="pills-dinner-tab">
                 <div class="row">
-                    <div class="col-md-6 site-animate">
 
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$24.50</h6>
-                            </div>
-                        </div>
+                    @{ int dinner = 0; }
+                    @if (ViewBag.Menu != null)
+                    {
+                        foreach (var item in ViewBag.Menu)
+                        {
+                            if (item.Type == "Dinner")
+                            {
+                                if (dinner != 0 && dinner % 3 == 0)
+                                {
+                                @:</div>
+                                @:<div class="row">
+                                }
+                                <div class="col-md-6 site-animate">
 
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Salted Fried Chicken</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$35.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$14.50</h6>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 site-animate">
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_3.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Fried Potato w/ Garlic</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$18.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_2.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Italian Sauce Mushroom</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$35.50</h6>
-                            </div>
-                        </div>
-
-                        <div class="media menu-item">
-                            <img class="mr-3 img-fluid" src="~/Assets/Client/images/menu_1.jpg" alt="Free Template by colorlib.com">
-                            <div class="media-body">
-                                <h5 class="mt-0">Salted Fried Chicken</h5>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <h6 class="text-primary menu-price">$12.50</h6>
-                            </div>
-                        </div>
-
-
-                    </div>
+                                    <div class="media menu-item">
+                                        <img class="mr-3 img-fluid" src=@Url.Content(item.ImagePath) alt="#">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">@item.Name</h5>
+                                            <p>@item.Description</p>
+                                            <h6 class="text-primary menu-price">$@item.Price</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
                 </div>
             </div>
         </div>
