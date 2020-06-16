@@ -23,6 +23,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
@@ -39,7 +40,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                         UserName = user.UserName,
                         UserID = user.ID
                     };
-                    //Session["UserName"] = user.Name.ToString();
+                    Session["UserName"] = user.User_Infor.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
                     Session["User"] = user.UserName.ToString();
                     Session["Avatar"] = user.User_Infor.Avatar.ToString();

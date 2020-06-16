@@ -6,6 +6,7 @@ namespace Project_Year_2.Models.EF
     using System.Linq;
     using Project_Year_2.Models.EF;
 
+
     public partial class QuanLyNhaHangDBContext : DbContext
     {
         public QuanLyNhaHangDBContext()

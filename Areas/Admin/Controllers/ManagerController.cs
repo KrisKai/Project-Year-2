@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Project_Year_2.Areas.Admin.Infrastructure;
 using Project_Year_2.Models.Dao;
 using Project_Year_2.Models.EF;
 using System;
@@ -8,10 +9,11 @@ using System.Web.Mvc;
 
 namespace Project_Year_2.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Manager")]
+    [CustomAuthenticationFilter]
     public class ManagerController : BaseController
     {
         // GET: Admin/Manager
+        [CustomAuthorize("Manager")]
         public ActionResult Home()
         {
             var dao = new UserDao();
