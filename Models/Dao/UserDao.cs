@@ -69,22 +69,22 @@ namespace Project_Year_2.Models.Dao
         }
         public Account GetByName(string UserName)
         {
-            return context.Accounts.Where(x => x.UserName == UserName).FirstOrDefault();
+            return context.Accounts.Where(x => x.UserName.Equals(UserName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
         }
         public Account ViewDetail(int ID)
         {
             return context.Accounts.Find(ID);
         }
-        public int Login_Manager(string userName, string passWord)
+        public int Login(string userName, string passWord)
         {
-            var result = context.Accounts.Where(x => x.UserName == userName && x.Role == "Manager").FirstOrDefault();
+            var result = context.Accounts.Where(x => x.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
             if (result == null)
             {
                 return 0;
             }
             else
             {
-                if(result.Status == false)
+                if (result.Status == false)
                 {
                     return -1;
                 }

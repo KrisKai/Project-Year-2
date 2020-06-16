@@ -6,6 +6,7 @@ using Project_Year_2.Models.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -27,7 +28,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new AdminDao();
+                var dao = new UserDao();
                 var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
                 
                 if (result == 1)
@@ -41,8 +42,9 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     //Session["UserName"] = user.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
                     Session["User"] = user.UserName.ToString();
-                    Session["Avatar"] = user.Avatar.ToString();
-                    
+                    Session["Avatar"] = user.User_Infor.Avatar.ToString();
+                    var claims = new List<Claim>();
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserName));
                     Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");
                 }
