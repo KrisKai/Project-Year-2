@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model  IEnumerable<Project_Year_2.Models.EF.Bill_Infor>
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Thông tin của Hóa đơn</h6>
+        </div>
+        <div class="card-body">
+            <a href="CreateInfo" class="btn btn-outline-info btn-sm site-animate">Thêm thông tin Hóa đơn</a>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên món ăn</th>
+                            <th>Mô tả</th>
+                            <th>Tổng</th>
+                            <th>Người tạo</th>
+                            <th>Ngày tạo</th>
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr id="row_@item.ID_Bill">
+
+                                    <td>@item.BillName</td>
+                                    <td>@Html.ActionLink("Chi tiết", "Show", "Bills", new { id = @item.ID_Bill }, null)</td>
+                                    <td>@item.Total</td>
+                                    <td>@item.CreatedBy</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", "Bills", new { id = @item.ID_Bill }, null)
+                                        |
+                                        @Html.ActionLink("Xóa", "Delete", "Bills", new { id = @item.ID_Bill }, null)
+                                        
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ using Project_Year_2.Models.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -33,14 +34,17 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 if (result == 1)
                 {
                     var user = dao.GetByName(model.UserName);
-                    var userSession = new UserLogin();
-                    userSession.UserName = user.UserName;
-                    Session["UserName"] = user.Name.ToString();
+                    var userSession = new UserLogin
+                    {
+                        UserName = user.UserName,
+                        UserID = user.ID
+                    };
+                    //Session["UserName"] = user.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
-                    var image = user.Avatar.ToString();
-                    image = image.Substring(1);
-                    Session["Avatar"] = image;
-                    userSession.UserID = user.ID;
+                    Session["User"] = user.UserName.ToString();
+                    Session["Avatar"] = user.User_Infor.Avatar.ToString();
+                    var claims = new List<Claim>();
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserName));
                     Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");
                 }

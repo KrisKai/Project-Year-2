@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "CreateInfo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-5 bg-light">
+            <div class="panel panel-default">
+                <div class="panel-heading font-weight-bolder">
+                    Thêm thông tin Hóa đơn
+                    <hr />
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("CreateInfo", "Bills", FormMethod.Post))
+                    {
+
+
+                        @Html.DropDownList("ID_Bill", "")
+                        <hr/>
+                        <ul style="list-style-type:none">
+                            @foreach (var item in ViewBag.Bill)
+                            {
+                                <li><input type="checkbox" name="ID_Menus" value="@item.ID_Menu" /> @item.Name</li>
+                            }
+                        </ul>
+                        <input type="submit" value="Xác nhận" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

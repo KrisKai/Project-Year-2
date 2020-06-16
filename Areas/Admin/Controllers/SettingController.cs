@@ -15,16 +15,16 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult Index()
         {
             int id = int.Parse(Session["IDName"].ToString());
-            var account = new UserDao().ViewDetail(id);
+            var account = new AdminDao().ViewDetail(id);
             return View(account);
         }
         [HttpPost]
-        public ActionResult Index(Account account)
+        public ActionResult Index(Project_Year_2.Models.EF.Admin account)
         {
             if (ModelState.IsValid)
             {
 
-                var dao = new UserDao();
+                var dao = new AdminDao();
                 if (!string.IsNullOrEmpty(account.Password))
                 {
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);

@@ -2,20 +2,20 @@
     ViewBag.Title = "Update Menu";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@model Project_Year_2.Models.EF.Food
+@model Project_Year_2.Models.EF.Menu
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 m-5 bg-light">
             <div class="panel panel-default">
                 <div class="panel-heading font-weight-bolder">
-                    Cập nhập thông tin món ăn
+                    Cập nhập thông tin Món ăn
                     <hr />
                 </div>
                 <div class="panel-body">
 
                     <div class="shadow p-4 mb-4 bg-white">
-                        @using (Html.BeginForm("Edit", "Menu", FormMethod.Post))
+                        @using (Html.BeginForm("Edit", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
 
                             @Html.AntiForgeryToken()

@@ -1,0 +1,114 @@
+﻿@model Project_Year_2.Models.EF.Account
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-5 bg-light">
+            <div class="panel panel-default">
+                <div class="panel-heading font-weight-bolder">
+                    Xóa tài khoản Quản lí
+                    <hr />
+                </div>
+                <div class="panel-body">
+
+                    <div class="shadow p-4 mb-4 bg-white">
+                        @using (Html.BeginForm("Delete", "User", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            if (ViewBag.Success != null)
+                            {
+                                <div class="alert alert-success">@ViewBag.Success</div>
+                            }
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control ", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.Name, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.Name, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.PhoneNumber, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.PhoneNumber, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.PhoneNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.IdentityID, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.IdentityID, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.IdentityID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.Address, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.Address, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.BirthDay, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.BirthDay, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.BirthDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.User_Infor.Email, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.User_Infor.Email, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.User_Infor.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.CreatedDate, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div><div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.CreatedBy, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-6 ">
+                                    <input type="submit" value="Xóa" class="btn btn-default bg-primary text-white" />
+                                </div>
+                            </div>
+                            <div>
+                                @Html.ActionLink("Back to List", "Home")
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

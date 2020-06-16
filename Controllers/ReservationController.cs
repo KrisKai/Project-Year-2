@@ -20,7 +20,7 @@ namespace Project_Year_2.Controllers
             return View("Index", "Home");
         }
         [HttpPost]
-        public ActionResult Create(FoodTable table)
+        public ActionResult Create(Order table)
         {
             if (ModelState.IsValid)
             {
@@ -45,7 +45,9 @@ namespace Project_Year_2.Controllers
                         new MailHelper().SendMail(toEmail, "Đơn đặt bàn mới từ My Restaurant", content);
                     }
                     catch (Exception) { }
-                    return RedirectToAction("Index", "Home");
+                    
+                    ViewData["success"] = "Thêm Đơn đặt bàn thành công";
+                    
                 }
                 else
                 {

@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@model  IEnumerable<Project_Year_2.Models.EF.Food>
+@model  IEnumerable<Project_Year_2.Models.EF.Menu>
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/MenuController.js"></script>
     <script src="~/Assets/Admin/js/Controller/ChangeHot.js"></script>
@@ -36,24 +36,30 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr id="row_@item.ID_Food">
+                                <tr id="row_@item.ID_Menu">
+                                    
                                     <td>@item.Name</td>
                                     <td>@item.Description</td>
-                                    <td>@item.ImagePath</td>
+                                    
+                                    <td>
+                                        @if (item.ImagePath != null)
+                                        {
+                                            <img class="img-profile rounded" src="@Url.Content(item.ImagePath)" width="250" height="250">
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                    </td>
                                     <td>@item.Price</td>
                                     <td>@item.Type</td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID_Food">@(item.Hot ? "Còn" : "Hết")</a></td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID_Food">@(item.Status ? "Còn" : "Hết")</a></td>
+                                    <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Hot ? "Còn" : "Hết")</a></td>
+                                    <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Status ? "Còn" : "Hết")</a></td>
 
                                     <td>
-                                        <a href="Edit/@item.ID_Food">Sửa</a>
+                                        @Html.ActionLink("Sửa", "Edit", "Menu", new { id = @item.ID_Menu }, null)
                                         |
-                                        @Ajax.ActionLink("Xóa", "Delete", new { @id = item.ID_Food }, new AjaxOptions
-                                   {
-                                       Confirm = "Bạn có muốn xóa món ăn này không?",
-                                       OnComplete = "$('#row_" + @item.ID_Food + "').remove()",
-                                       HttpMethod = "Delete"
-                                   })
+                                        @Html.ActionLink("Xóa", "Delete", "Menu", new { id = @item.ID_Menu }, null)
                                     </td>
                                 </tr>
                             }

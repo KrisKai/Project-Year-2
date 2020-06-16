@@ -10,9 +10,11 @@ namespace Project_Year_2.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly QuanLyNhaHangDBContext db = new QuanLyNhaHangDBContext();
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.Menu = db.Menus.ToList();
             return View();
         }
         [HttpPost]

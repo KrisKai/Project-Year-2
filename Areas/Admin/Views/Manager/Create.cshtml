@@ -1,0 +1,69 @@
+﻿@model Project_Year_2.Models.EF.Account
+
+@{
+    ViewBag.Title = "Register Manager";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-5 bg-light">
+            <div class="panel panel-default">
+                <div class="panel-heading font-weight-bolder">
+                    Tạo tài khoản Quản lí
+                    <hr />
+                </div>
+                <div class="panel-body">
+
+                    <div class="shadow p-4 mb-4 bg-white">
+                        @using (Html.BeginForm("Create", "Manager", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            if (ViewBag.Success != null)
+                            {
+                                <div class="alert alert-success">@ViewBag.Success</div>
+                            }
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control " })
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @Html.HiddenFor(model => model.Role, new { @Value = "Manager" })
+                            @Html.HiddenFor(model => model.Status, new { @Value = "True" })
+                            @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
+                            @Html.HiddenFor(model => model.CreatedBy, new { @Value = Session["User"].ToString() })
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-6 ">
+                                    <input type="submit" value="Đăng kí" class="btn btn-default bg-primary text-white" />
+                                </div>
+                            </div>
+                            <div>
+                                @Html.ActionLink("Back to List", "Home")
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

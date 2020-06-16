@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+@model IEnumerable<Project_Year_2.Models.EF.Account>
+
+@section jsFooter{
+    <script src="~/Assets/Admin/js/Controller/UserController.js"></script>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Thông tin của Quản lí</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tài khoản</th>
+                        <th>Họ và Tên</th>
+                        <th>Ảnh</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Chỉnh sửa</th>
+                    </tr>
+                </thead>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr id="row_@item.ID">
+                            <td>@item.UserName</td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    @item.User_Infor.Name
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
+                            <td>
+                                @if (@item.User_Infor != null)
+                                {
+                                    if (item.User_Infor.Avatar != null)
+                                    {
+                                        <img class="img-profile rounded" src="@Url.Content(item.User_Infor.Avatar)" width="50" height="50">
+                                    }
+                                    else
+                                    {
+                                        <div>Trống</div>
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    <div>Trống</div>
+                                }
+                            </td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CreatedBy</td>
+                            <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td>
+                                @if (@item.User_Infor == null)
+                                {
+                                    @Html.ActionLink("Thêm thông tin", "AddInfor", "Manager", new { id = @item.ID }, null)
+                                    <span>|</span>
+                                }
+                                @if (@item.User_Infor != null)
+                                {
+                                    @Html.ActionLink("Sửa", "Edit", "Manager", new { id = @item.ID }, null)
+                                    <span>|</span>
+                                }
+                                @Html.ActionLink("Xóa", "Delete", "Manager", new { id = @item.ID }, null)
+                                
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

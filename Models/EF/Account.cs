@@ -1,4 +1,4 @@
-namespace Project_Year_2.Models.EF
+﻿namespace Project_Year_2.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -10,41 +10,28 @@ namespace Project_Year_2.Models.EF
     [Table("Account")]
     public partial class Account
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Tài khoản")]
         public string UserName { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
-
-        [StringLength(10)]
-        public string Name { get; set; }
-
-        public string Avatar { get; set; }
-
-        public int? PhoneNumber { get; set; }
-
-        [StringLength(100)]
-        public string Address { get; set; }
-
-        [StringLength(30)]
-        public string IdentityID { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? BirthDay { get; set; }
-
-        [StringLength(50)]
-        public string Email { get; set; }
-
+        [Display(Name = "Ngày tạo")]
         public DateTime? CreatedDate { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
 
+        [StringLength(30)]
+        [Display(Name = "Vai trò")]
+        public string Role { get; set; }
+
         public bool Status { get; set; }
-        [NotMapped] 
-        public HttpPostedFileBase AvatarFile { get; set; }
+
+        public virtual User_Infor User_Infor { get; set; }
     }
 }

@@ -30,5 +30,16 @@ namespace Project_Year_2.Models.Dao
             context.SaveChanges();
             return message.Status;
         }
+        public bool Delete(int ID)
+        {
+            var message = context.Messages.Find(ID);
+            context.Messages.Remove(message);
+            context.SaveChanges();
+            return true;
+        }
+        public Message ViewDetail(int ID)
+        {
+            return context.Messages.Find(ID);
+        }
     }
 }

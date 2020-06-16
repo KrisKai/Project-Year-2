@@ -1,4 +1,4 @@
-namespace Project_Year_2.Models.EF
+﻿namespace Project_Year_2.Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -7,44 +7,38 @@ namespace Project_Year_2.Models.EF
     using System.Data.Entity.Spatial;
     using System.Web;
 
-    [Table("Staff")]
-    public partial class Staff
+    [Table("User_Infor")]
+    public partial class User_Infor
     {
-        [Key]
-        public long ID_Staff { get; set; }
+        public long ID { get; set; }
 
-        [StringLength(50)]
-        public string UserName { get; set; }
-
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        [StringLength(50)]
+        [StringLength(150)]
+        [Display(Name = "Họ và tên")]
         public string Name { get; set; }
 
+        [Display(Name = "Ảnh đại diện")]
         public string Avatar { get; set; }
 
+        [Display(Name = "Số điện thoại")]
         public int? PhoneNumber { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Địa chỉ")]
         public string Address { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "CMND")]
         public string IdentityID { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Ngày sinh")]
         public DateTime? BirthDay { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
-
-        [StringLength(50)]
-        public string CreatedBy { get; set; }
-
-        public bool Status { get; set; }
         [NotMapped]
         public HttpPostedFileBase AvatarFile { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

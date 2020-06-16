@@ -11,17 +11,17 @@ namespace Project_Year_2.Areas.Admin.Controllers
 {
     public class StaffController : BaseController
     {
-        // GET: Admin/Guest
+        // GET: Admin/Staff
         public ActionResult Home( )
         {
-            var dao = new StaffDao();
-            var model = dao.ListAll();
+            var dao = new UserDao();
+            var model = dao.ListAll_Staff();
             return View(model);
         }
         public ActionResult Index()
         {
-            var dao = new StaffDao();
-            var model = dao.ListAll();
+            var dao = new UserDao();
+            var model = dao.ListAll_Staff();
             return View(model);
         }
         [HttpGet]
@@ -31,42 +31,26 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Staff staff)
+        public ActionResult Create(Account staff)
         {
             if (ModelState.IsValid)
             {
-                var dao = new StaffDao();
+                var dao = new UserDao();
                 if (dao.CheckUserName(staff.UserName))
                 {
                     ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
                 }
-                else if (dao.CheckEmail(staff.Email))
-                {
-                    ModelState.AddModelError("", "Email đã được sử dụng");
-                }
+                
                 else
                 {
-                    if (staff.AvatarFile != null)
-                    {
-                        string fileName = Path.GetFileNameWithoutExtension(staff.AvatarFile.FileName);
-                        string extension = Path.GetExtension(staff.AvatarFile.FileName);
-                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                        staff.Avatar = "~/Assets/Admin/img/" + fileName;
-                        fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
-                        staff.AvatarFile.SaveAs(fileName);
-                    }
-                    else
-                    {
-                        staff.Avatar = "~/Assets/Admin/img/Default_Avatar.png";
-                        
-                    }
+                    
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(staff.Password);
                     staff.Password = encryptMd5Pass;
                     long id = dao.Insert(staff);
                     if (id > 0)
                     {
                         ViewBag.Success = "Đăng kí thành công";
-                        staff = new Staff();
+                        staff = new Account();
                     }
                     else
                     {
@@ -79,24 +63,36 @@ namespace Project_Year_2.Areas.Admin.Controllers
         }
         public ActionResult Edit(int ID)
         {
-            var staff = new StaffDao().ViewDetail(ID);
-            TempData["ID_Staff"] = ID;
+            var staff = new UserDao().ViewDetail(ID);
             return View(staff);
         }
         [HttpPost]
-        public ActionResult Edit(Staff staff)
+        public ActionResult Edit(Account staff)
         {
             if (ModelState.IsValid)
             {
 
-                var dao = new StaffDao();
+                var dao = new UserDao();
                 if (!string.IsNullOrEmpty(staff.Password))
                 {
                     var encryptMd5Pass = Common.Encryptor.MD5Hash(staff.Password);
                     staff.Password = encryptMd5Pass;
                 }
-                int ID_Staff_Get = int.Parse(TempData["ID_Staff"].ToString());
-                var result = dao.Update(staff, ID_Staff_Get);
+                if (staff.User_Infor.AvatarFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(staff.User_Infor.AvatarFile.FileName);
+                    string extension = Path.GetExtension(staff.User_Infor.AvatarFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    staff.User_Infor.Avatar = "~/Assets/Admin/img/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
+                    staff.User_Infor.AvatarFile.SaveAs(fileName);
+                }
+                else
+                {
+                    staff.User_Infor.Avatar = "~/Assets/Admin/img/Default_Avatar.png";
+
+                }
+                var result = dao.Update(staff);
                 if (result)
                 {
                     SetAlert("Cập nhập tài khoản thành công", "success");
@@ -109,16 +105,65 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Home");
         }
-        [HttpDelete]
+        public ActionResult AddInfor()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddInfor(int ID, User_Infor entity)
+        {
+            var infor = new UserDao();
+            entity.ID = ID;
+            long user = 0;
+            if (infor.CheckEmail(entity.Email))
+            {
+                ModelState.AddModelError("", "Email đã được sử dụng");
+            }
+            else
+            {
+                if (entity.AvatarFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(entity.AvatarFile.FileName);
+                    string extension = Path.GetExtension(entity.AvatarFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    entity.Avatar = "~/Assets/Admin/img/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
+                    entity.AvatarFile.SaveAs(fileName);
+                }
+                else
+                {
+                    entity.Avatar = "~/Assets/Admin/img/Default_Avatar.png";
+
+                }
+                user = infor.InsertInfor(entity);
+            }
+            
+            if (user > 0)
+            {
+                SetAlert("Cập nhập tài khoản thành công", "success");
+                return RedirectToAction("Home", "Staff");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+            }
+            return View();
+        }
         public ActionResult Delete(int ID)
         {
-            new StaffDao().Delete(ID);
+            Account account = new UserDao().ViewDetail(ID);
+            return View(account);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int ID)
+        {
+            new UserDao().Delete(ID);
             return RedirectToAction("Home");
         }
         [HttpPost]
         public JsonResult ChangeStatus(long id)
         {
-            var result = new StaffDao().ChangeStatus(id);
+            var result = new UserDao().ChangeStatus(id);
             return Json(new
             {
                 status = result

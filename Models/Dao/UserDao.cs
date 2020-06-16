@@ -8,7 +8,7 @@ namespace Project_Year_2.Models.Dao
 {
     public class UserDao
     {
-        QuanLyNhaHangDBContext context = null;  
+        readonly QuanLyNhaHangDBContext context = null;  
         public UserDao()
         {
             context = new QuanLyNhaHangDBContext();
@@ -24,16 +24,17 @@ namespace Project_Year_2.Models.Dao
             try
             {
                 var user = context.Accounts.Find(entity.ID);
-                user.Name = entity.Name;
+                user.User_Infor.Name = entity.User_Infor.Name;
                 if (!string.IsNullOrEmpty(entity.Password))
                 {
                     user.Password = entity.Password;
                 }
-                user.PhoneNumber = entity.PhoneNumber;
-                user.IdentityID = entity.IdentityID;
-                user.Address = entity.Address;
-                user.BirthDay = entity.BirthDay;
-                user.Email = entity.Email;
+                user.User_Infor.Avatar = entity.User_Infor.Avatar;
+                user.User_Infor.PhoneNumber = entity.User_Infor.PhoneNumber;
+                user.User_Infor.IdentityID = entity.User_Infor.IdentityID;
+                user.User_Infor.Address = entity.User_Infor.Address;
+                user.User_Infor.BirthDay = entity.User_Infor.BirthDay;
+                user.User_Infor.Email = entity.User_Infor.Email;
                 
                 context.SaveChanges();
                 return true;
@@ -45,33 +46,67 @@ namespace Project_Year_2.Models.Dao
         }
         public bool Delete(int ID)
         {
-            var user = context.Accounts.Find(ID);
-            context.Accounts.Remove(user);
+            var account = context.Accounts.Find(ID);
+            if (account.User_Infor != null)
+            {
+                context.User_Infors.Remove(account.User_Infor);
+
+            }
+            if (account != null)
+            {
+                context.Accounts.Remove(account);
+            }
             context.SaveChanges();
             return true;
         }
-        public List<Account> ListAll()
+        public List<Account> ListAll_Manager()
         {   
-            return context.Accounts.OrderBy(x => x.Name).ToList();
+            return context.Accounts.Where(x => x.Role == "Manager").ToList();
+        }
+        public List<Account> ListAll_Staff()
+        {
+            return context.Accounts.Where(x => x.Role == "Staff").ToList();
         }
         public Account GetByName(string UserName)
         {
-            return context.Accounts.FirstOrDefault(x=>x.UserName == UserName);
+            return context.Accounts.Where(x => x.UserName.Equals(UserName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
         }
         public Account ViewDetail(int ID)
         {
             return context.Accounts.Find(ID);
         }
-        public int Login(string useName, string passWord)
+        public int Login(string userName, string passWord)
         {
-            var result = context.Accounts.FirstOrDefault(x => x.UserName == useName);
+            var result = context.Accounts.Where(x => x.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
             if (result == null)
             {
                 return 0;
             }
             else
             {
-                if(result.Status == false)
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.Password == passWord)
+                        return 1;
+                    else
+                        return -2;
+                }
+            }
+        }
+        public int Login_Staff(string userName, string passWord)
+        {
+            var result = context.Accounts.Where(x => x.UserName == userName && x.Role == "Staff").FirstOrDefault();
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result.Status == false)
                 {
                     return -1;
                 }
@@ -100,7 +135,7 @@ namespace Project_Year_2.Models.Dao
             try
             {
                 var dao = context.Accounts.Find(id);
-                dao.Avatar = account.Avatar;
+                dao.User_Infor.Avatar = account.User_Infor.Avatar;
                 context.SaveChanges();
                 return true;
             }
@@ -108,6 +143,16 @@ namespace Project_Year_2.Models.Dao
             {
                 return false;
             }
+        }
+        public long InsertInfor(User_Infor infor)
+        {
+            context.User_Infors.Add(infor);
+            context.SaveChanges();
+            return infor.ID;
+        }
+        public bool CheckEmail(string email)
+        {
+            return context.User_Infors.Count(x => x.Email == email) > 0;
         }
     }
 }
