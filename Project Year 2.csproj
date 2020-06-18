@@ -2114,6 +2114,8 @@
     <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\Admin\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\Error\UnAuthorzied.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Change.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2220,7 +2222,6 @@
     <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\CustomAuthenticationFilter.cs" />
     <Compile Include="Areas\Admin\Infrastructure\CustomAuthorizeAttribute.cs" />
-    <Compile Include="Areas\Admin\Models\ConfirmModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -2236,13 +2237,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dao\AdminDao.cs" />
     <Compile Include="Models\Dao\UserDao.cs" />
     <Compile Include="Models\Dao\BillDao.cs" />
     <Compile Include="Models\Dao\MessageDao.cs" />
     <Compile Include="Models\Dao\OrderDao.cs" />
     <Compile Include="Models\Dao\MenuDao.cs" />
-    <Compile Include="Models\EF\Admin.cs" />
     <Compile Include="Models\EF\Bill.cs" />
     <Compile Include="Models\EF\Bill_Infor.cs" />
     <Compile Include="Models\EF\Account.cs" />
