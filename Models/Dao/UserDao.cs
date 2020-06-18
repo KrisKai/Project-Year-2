@@ -69,7 +69,7 @@ namespace Project_Year_2.Models.Dao
         }
         public Account GetByName(string UserName)
         {
-            return context.Accounts.Where(x => x.UserName.Equals(UserName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
+            return context.Accounts.Where(x => x.UserName.Equals(UserName, StringComparison.CurrentCulture)).SingleOrDefault();
         }
         public Account ViewDetail(int ID)
         {
@@ -77,7 +77,7 @@ namespace Project_Year_2.Models.Dao
         }
         public int Login(string userName, string passWord)
         {
-            var result = context.Accounts.Where(x => x.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault();
+            var result = context.Accounts.Where(x => x.UserName.Equals(userName,StringComparison.CurrentCulture)).SingleOrDefault();
             if (result == null)
             {
                 return 0;

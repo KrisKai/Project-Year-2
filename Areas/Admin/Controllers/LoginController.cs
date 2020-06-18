@@ -30,8 +30,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
-                
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));             
                 if (result == 1)
                 {
                     var user = dao.GetByName(model.UserName);
@@ -43,9 +42,8 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     Session["UserName"] = user.User_Infor.Name.ToString();
                     Session["IDName"] = user.ID.ToString();
                     Session["User"] = user.UserName.ToString();
+                    Session["Role"] = user.Role.ToString();
                     Session["Avatar"] = user.User_Infor.Avatar.ToString();
-                    var claims = new List<Claim>();
-                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserName));
                     Session.Add("USER_SESSION", userSession);
                     return RedirectToAction("Index", "Home");
                 }

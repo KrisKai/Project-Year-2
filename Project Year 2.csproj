@@ -226,8 +226,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\css\font-awesome.min.css" />
     <Content Include="Assets\Admin\css\sb-admin-2.css" />
     <Content Include="Assets\Admin\css\sb-admin-2.min.css" />
+    <Content Include="Assets\Admin\css\style.css" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Admin\img\bg.jpg" />
     <Content Include="Assets\Admin\img\DashBoard.jpg" />
     <Content Include="Assets\Admin\img\Default_Avatar.png" />
     <Content Include="Assets\Admin\img\undraw_posting_photo.svg" />
@@ -2104,6 +2108,11 @@
     <Content Include="Areas\Admin\Views\Staff\AddInfor.cshtml" />
     <Content Include="Areas\Admin\Views\Message\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Error\PageNotFound.cshtml" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\Error\UnAuthorzied.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
@@ -2211,11 +2220,13 @@
     <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Admin\Infrastructure\CustomAuthenticationFilter.cs" />
     <Compile Include="Areas\Admin\Infrastructure\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Areas\Admin\Models\ConfirmModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Models\SettingModel.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\MailHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />

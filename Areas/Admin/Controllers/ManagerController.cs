@@ -10,10 +10,11 @@ using System.Web.Mvc;
 namespace Project_Year_2.Areas.Admin.Controllers
 {
     [CustomAuthenticationFilter]
+    [CustomAuthorize("Admin")]
     public class ManagerController : BaseController
     {
         // GET: Admin/Manager
-        [CustomAuthorize("Manager")]
+        
         public ActionResult Home()
         {
             var dao = new UserDao();

@@ -4,11 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project_Year_2.Areas.Admin.Infrastructure;
 using Project_Year_2.Models.Dao;
 using Project_Year_2.Models.EF;
 
 namespace Project_Year_2.Areas.Admin.Controllers
 {
+    [CustomAuthenticationFilter]
+    [CustomAuthorize("Admin")]
     public class StaffController : BaseController
     {
         // GET: Admin/Staff

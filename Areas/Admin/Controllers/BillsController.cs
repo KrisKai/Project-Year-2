@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project_Year_2.Areas.Admin.Infrastructure;
 
 namespace Project_Year_2.Areas.Admin.Controllers
 {
+    [CustomAuthenticationFilter]
     public class BillsController : BaseController
     {
         private readonly QuanLyNhaHangDBContext db = new QuanLyNhaHangDBContext();
@@ -80,6 +82,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Index");
         }
+        [CustomAuthorize("Admin","Manager")]
         public ActionResult Delete(int ID)
         {
             Bill_Infor bill = new BillDao().ViewDetail(ID);

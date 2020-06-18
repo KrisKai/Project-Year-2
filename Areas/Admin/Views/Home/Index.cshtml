@@ -1,7 +1,39 @@
 ﻿
-@{
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Dashboard";
-}
-<h5 class="text-center font-weight-bold"> Trang chủ</h5>
-<img class="mx-auto d-block img-fluid" src="~/Assets/Admin/img/DashBoard.jpg"  />
+
+<style>
+    body, html {
+        height: 100%;
+        font-family: "Inconsolata", sans-serif;
+    }
+
+    .bgimg {
+        background-position: center;
+        background-size: cover;
+        background-image: url("/Assets/Admin/img/DashBoard.jpg");
+        height: 75%;
+    }
+
+    .menu {
+        display: none;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class=" w3-sand w3-grayscale w3-large">
+
+        <!-- About Container -->
+        <div class="content">
+            <h5 class="text-center">Chào mừng @Session["Role"] <span class="text-center w3-tag w3-wide">@Session["UserName"]</span></h5>
+
+        </div>
+
+        <!-- End page content -->
+    </div>
+</div>
+
+
+<div class="bgimg w3-display-container w3-grayscale-min">
+</div>
+
+<!-- Header with image -->
+<!-- Add a background color and large text to the whole page -->
