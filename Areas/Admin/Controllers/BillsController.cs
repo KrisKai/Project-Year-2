@@ -59,7 +59,6 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult Edit(int ID)
         {
             var bill = new BillDao().ViewDetail(ID);
-            TempData["ID_Table"] = ID;
             return View(bill);
         }
         [HttpPost]
@@ -118,10 +117,10 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 {
                     bill.ID_Bill = ID_Bill;
                     bill.ID_Menu = itemID;
+                    
                     db.Bills.Add(bill);
                     db.SaveChanges();
                 }
-
             }
             return RedirectToAction("Index");
         }

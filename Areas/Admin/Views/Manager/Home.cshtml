@@ -62,78 +62,75 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <small>ĐÓNG </small><span aria-hidden="true">&times;</span>
                                 </button>
-                                <br >
+                                <br>
                                 <div class="mb-4">
                                     <div class="form-group font-weight-bold">
                                         <hr />
-                                        <div class="text-center">Thông tin chi tiết của @item.UserName</div>
+                                        <h3 class="text-center">Thông tin chi tiết của @item.UserName</h3>
                                         <br>
                                         <br>
                                         <div>
                                             <span class="col-md-8">Họ tên:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ var name = "Trống";}
+                                            @if (@item.User_Infor != null && @item.User_Infor.Name != null)
                                             {
-                                                @item.User_Infor.Name
+                                                name = @item.User_Infor.Name;
                                             }
-                                            else
-                                            {
-                                                <div>Trống</div>
-                                            }
+                                            <input class="form-control col-md-5" value="@name" disabled>
+
                                         </div>
                                         <div>
                                             <span class="col-md-8">Số điện thoại:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ int? phone = 0;}
+                                            @if (@item.User_Infor != null && @item.User_Infor.PhoneNumber != null)
                                             {
-                                                @item.User_Infor.PhoneNumber
+                                                phone = @item.User_Infor.PhoneNumber;
+                                                <input class="form-control col-md-5" value="@phone" disabled>
                                             }
                                             else
                                             {
-                                                <span>Trống</span>
+                                                <input class="form-control col-md-5" value="Trống" disabled>
                                             }
                                         </div>
                                         <div>
                                             <span class="col-md-8">Địa chỉ:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ var address = "Trống";}
+                                            @if (@item.User_Infor != null && @item.User_Infor.Address != null)
                                             {
-                                                @item.User_Infor.Address
+                                                address = @item.User_Infor.Address;
                                             }
-                                            else
-                                            {
-                                                <div>Trống</div>
-                                            }
+                                            <input class="form-control col-md-5" value="@address" disabled>
                                         </div>
                                         <div>
                                             <span class="col-md-8">CMND:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ var ID = "Trống";}
+                                            @if (@item.User_Infor != null && @item.User_Infor.IdentityID != null)
                                             {
-                                                @item.User_Infor.IdentityID
+                                                ID = @item.User_Infor.IdentityID;
                                             }
-                                            else
-                                            {
-                                                <div>Trống</div>
-                                            }
+                                            <input class="form-control col-md-5" value="@ID" disabled>
                                         </div>
                                         <div>
                                             <span class="col-md-8">Ngày sinh:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ DateTime? dob = null;}
+                                            @if (@item.User_Infor != null && @item.User_Infor.BirthDay != null)
                                             {
-                                                @item.User_Infor.BirthDay
+                                                dob = @item.User_Infor.BirthDay;
+                                                <input class="form-control col-md-5" value="@dob" disabled>
                                             }
                                             else
                                             {
-                                                <div>Trống</div>
+                                                <input class="form-control col-md-5" value="Trống" disabled>
                                             }
                                         </div>
                                         <div>
                                             <span class="col-md-8">Email:</span>
-                                            @if (@item.User_Infor != null)
+                                            @{ var email = "Trống";}
+                                            @if (@item.User_Infor != null && @item.User_Infor.Email != null)
                                             {
-                                                @item.User_Infor.Email
+                                                email = @item.User_Infor.Email;
                                             }
-                                            else
-                                            {
-                                                <div>Trống</div>
-                                            }
+                                            <input class="form-control col-md-5" value="@email" disabled>
                                         </div>
                                     </div>
                                 </div>
