@@ -73,7 +73,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 if (result)
                 {
                     SetAlert("Cập nhập hóa đơn thành công", "success");
-                    return RedirectToAction("Index", "Menu");
+                    return RedirectToAction("Index", "Bills");
                 }
                 else
                 {

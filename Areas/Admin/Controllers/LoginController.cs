@@ -45,6 +45,20 @@ namespace Project_Year_2.Areas.Admin.Controllers
                     Session["Role"] = user.Role.ToString();
                     Session["Avatar"] = user.User_Infor.Avatar.ToString();
                     Session.Add("USER_SESSION", userSession);
+                    if (model.RememberMe)
+                    {
+                        // They do, so let's create an authentication cookie
+                        var cookie = FormsAuthentication.GetAuthCookie(model.UserName, model.RememberMe);
+                        // Since they want to be remembered, set the expiration for 30 days
+                        cookie.Expires = DateTime.Now.AddDays(30);
+                        // Store the cookie in the Response
+                        Response.Cookies.Add(cookie);
+                    }
+                    else
+                    {
+                        // Otherwise set the cookie as normal
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else if(result == 0)

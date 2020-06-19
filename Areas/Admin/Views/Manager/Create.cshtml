@@ -1,10 +1,8 @@
-﻿@model Project_Year_2.Models.EF.Account
-
-@{
+﻿@{
     ViewBag.Title = "Register Manager";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+@model Project_Year_2.Models.EF.Account
 <div class="container">
     <div class="row">
         <div class="col-md-6 m-5 bg-light">
@@ -40,6 +38,14 @@
                                 <div class="col-md-10">
                                     @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 

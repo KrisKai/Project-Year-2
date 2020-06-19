@@ -46,19 +46,25 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 
                 else
                 {
+                    try
+                    {
+                        var encryptMd5Pass = Common.Encryptor.MD5Hash(staff.Password);
+                        var encryptMd5ConPass = Common.Encryptor.MD5Hash(staff.ConfirmPassword);
+                        staff.Password = encryptMd5Pass;
+                        staff.ConfirmPassword = encryptMd5ConPass;
+                        long id = dao.Insert(staff);
+                        if (id > 0)
+                        {
+                            ViewBag.Success = "Đăng kí thành công";
+                            staff = new Account();
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Thêm tài khoản nhân viên không thành công");
+                        }
+                    }
+                    catch (Exception) { }
                     
-                    var encryptMd5Pass = Common.Encryptor.MD5Hash(staff.Password);
-                    staff.Password = encryptMd5Pass;
-                    long id = dao.Insert(staff);
-                    if (id > 0)
-                    {
-                        ViewBag.Success = "Đăng kí thành công";
-                        staff = new Account();
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Thêm tài khoản nhân viên không thành công");
-                    }
                 }
                 
             }

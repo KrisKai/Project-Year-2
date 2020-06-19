@@ -44,6 +44,14 @@
                                 </div>
                             </div>
 
+                            <div class="form-group font-weight-bold">
+                                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-10" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
                             @Html.HiddenFor(model => model.Role, new { @Value = "Staff" })
                             @Html.HiddenFor(model => model.Status, new { @Value = "True" })
                             @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })

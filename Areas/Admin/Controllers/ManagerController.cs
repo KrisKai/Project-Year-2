@@ -4,7 +4,9 @@ using Project_Year_2.Models.Dao;
 using Project_Year_2.Models.EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Project_Year_2.Areas.Admin.Controllers
@@ -46,19 +48,41 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
-                    var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
-                    account.Password = encryptMd5Pass;
-                    long id = dao.Insert(account);
-                    if (id > 0)
+                    try
                     {
-                        ViewBag.Success = "Đăng kí thành công";
-                        account = new Account();
+                        var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
+                        var encryptMd5ConPass = Common.Encryptor.MD5Hash(account.ConfirmPassword);
+                        account.Password = encryptMd5Pass;
+                        account.ConfirmPassword = encryptMd5ConPass;
+                        long id = dao.Insert(account);
+                        if (id > 0)
+                        {
+                            ViewBag.Success = "Đăng kí thành công";
+                            account = new Account();
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Thêm tài khoản thành công");
+                        }
                     }
-                    else
+
+                    catch (DbEntityValidationException ex)
                     {
-                        ModelState.AddModelError("", "Thêm tài khoản thành công");
+                        // Retrieve the error messages as a list of strings.
+                        var errorMessages = ex.EntityValidationErrors
+                                .SelectMany(x => x.ValidationErrors)
+                                .Select(x => x.ErrorMessage);
+
+                        // Join the list to a single string.
+                        var fullErrorMessage = string.Join("; ", errorMessages);
+
+                        // Combine the original exception message with the new one.
+                        var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                        // Throw a new DbEntityValidationException with the improved exception message.
+                        throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
                     }
-                }                
+                }
             }
             return View(account);
         }
