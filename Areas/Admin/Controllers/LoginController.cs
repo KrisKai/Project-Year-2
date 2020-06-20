@@ -39,11 +39,26 @@ namespace Project_Year_2.Areas.Admin.Controllers
                         UserName = user.UserName,
                         UserID = user.ID
                     };
-                    Session["UserName"] = user.User_Infor.Name.ToString();
+                    if (user.User_Infor != null)
+                    {
+                        Session["UserName"] = user.User_Infor.Name.ToString();
+                    }
+                    else
+                    {
+                        Session["UserName"] = "User";
+                    }
                     Session["IDName"] = user.ID.ToString();
                     Session["User"] = user.UserName.ToString();
                     Session["Role"] = user.Role.ToString();
-                    Session["Avatar"] = user.User_Infor.Avatar.ToString();
+                    if (user.User_Infor != null)
+                    {
+                        Session["Avatar"] = user.User_Infor.Avatar.ToString();
+                    }
+                    else
+                    {
+                        Session["Avatar"] = "/Assets/Admin/img/Default_Avatar.png";
+                    }
+                    
                     Session.Add("USER_SESSION", userSession);
                     if (model.RememberMe)
                     {

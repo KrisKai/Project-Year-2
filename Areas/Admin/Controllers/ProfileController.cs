@@ -30,6 +30,10 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 fileName = Path.Combine(Server.MapPath("~/Assets/Admin/img/"), fileName);
                 account.User_Infor.AvatarFile.SaveAs(fileName);
             }
+            else
+            {
+                account.User_Infor.Avatar = "/Assets/Admin/img/Default_Avatar.png";
+            }
             int id = int.Parse(Session["IDName"].ToString());
             var user = new UserDao().UpdateAvatar(id, account);
             if (user)

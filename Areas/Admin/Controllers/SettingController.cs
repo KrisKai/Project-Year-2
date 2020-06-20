@@ -43,13 +43,23 @@ namespace Project_Year_2.Areas.Admin.Controllers
                         var encryptMd5ConPass = Common.Encryptor.MD5Hash(account.ConfirmPassword);
                         if(user.Password == encryptMd5Pass && user.Password == encryptMd5ConPass)
                         {
-                            user.User_Infor.Name = account.User_Infor.Name;
-                            user.User_Infor.PhoneNumber = account.User_Infor.PhoneNumber;
-                            user.User_Infor.IdentityID = account.User_Infor.IdentityID;
-                            user.User_Infor.Address = account.User_Infor.Address;
-                            user.User_Infor.BirthDay = account.User_Infor.BirthDay;
-                            user.User_Infor.Email = account.User_Infor.Email;
-                            context.SaveChanges();
+                            if (user.User_Infor != null)
+                            {
+                                user.User_Infor.Name = account.User_Infor.Name;
+                                user.User_Infor.PhoneNumber = account.User_Infor.PhoneNumber;
+                                user.User_Infor.IdentityID = account.User_Infor.IdentityID;
+                                user.User_Infor.Address = account.User_Infor.Address;
+                                user.User_Infor.BirthDay = account.User_Infor.BirthDay;
+                                user.User_Infor.Email = account.User_Infor.Email;
+                                context.SaveChanges();
+                            }
+                            else
+                            {
+                                account.User_Infor.ID = user.ID;
+                                account.User_Infor.Avatar = "/Assets/Admin/img/Default_Avatar.png";
+                                context.User_Infors.Add(account.User_Infor);
+                                context.SaveChanges();
+                            }
                             result = true;
                         }
                         else

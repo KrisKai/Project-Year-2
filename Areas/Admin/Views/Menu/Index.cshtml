@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Thông tin của Lời nhắn</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Thông tin của Thực đơn</h6>
         </div>
         <div class="card-body">
 
@@ -44,7 +44,7 @@
                                     <td>
                                         @if (item.ImagePath != null)
                                         {
-                                            <img class="img-profile rounded" src="@Url.Content(item.ImagePath)" width="250" height="250">
+                                            <img class="img-profile rounded" src="@Url.Content(item.ImagePath)" width="200" height="200">
                                         }
                                         else
                                         {
@@ -52,7 +52,24 @@
                                         }
                                     </td>
                                     <td>@item.Price</td>
-                                    <td>@item.Type</td>
+                                    <td>
+                                        @if (item.Type == "Breakfast")
+                                        {
+                                            <div>Bữa sáng</div>
+                                        }
+                                        else if (item.Type == "Lunch")
+                                        {
+                                            <div>Bữa trưa</div>
+                                        }
+                                        else if (item.Type == "Dinner")
+                                        {
+                                            <div>Bữa tối</div>
+                                        }
+                                        else
+                                        {
+                                            <div>Trống</div>
+                                        }
+                                                                    </td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Hot ? "Còn" : "Hết")</a></td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Status ? "Còn" : "Hết")</a></td>
 
