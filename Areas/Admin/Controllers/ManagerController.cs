@@ -62,7 +62,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                         }
                         else
                         {
-                            ModelState.AddModelError("", "Thêm tài khoản thành công");
+                            SetAlert("Thêm tài khoản không thành công", "error");
                         }
                     }
 
@@ -123,7 +123,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                    SetAlert("Cập nhập tài khoản không thành công", "error");
                 }
             }
             
@@ -141,11 +141,6 @@ namespace Project_Year_2.Areas.Admin.Controllers
             {
 
                 var dao = new UserDao();
-                if (!string.IsNullOrEmpty(account.Password))
-                {
-                    var encryptMd5Pass = Common.Encryptor.MD5Hash(account.Password);
-                    account.Password = encryptMd5Pass;
-                }
                 if (account.User_Infor.AvatarFile != null)
                 {
                     string fileName = Path.GetFileNameWithoutExtension(account.User_Infor.AvatarFile.FileName);
@@ -168,7 +163,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                    SetAlert("Cập nhập tài khoản không thành công","error");
                 }
             }
             return View("Home");
@@ -193,6 +188,11 @@ namespace Project_Year_2.Areas.Admin.Controllers
             {
                 status = result
             });
+        }
+        public ActionResult ResetPass(int ID)
+        {
+            new UserDao().ResetPass(ID);
+            return RedirectToAction("Home");
         }
     }
 }

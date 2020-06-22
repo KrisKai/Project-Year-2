@@ -19,7 +19,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             return View(account);
         }
         [HttpPost]
-        public ActionResult Index(Project_Year_2.Models.EF.Account account)
+        public ActionResult Index(Account account)
         {
             if (account.User_Infor.AvatarFile != null)
             {

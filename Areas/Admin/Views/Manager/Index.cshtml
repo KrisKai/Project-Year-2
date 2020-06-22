@@ -26,6 +26,7 @@
                         <th>Ngày tạo</th>
                         <th>Người tạo</th>
                         <th>Trạng thái</th>
+                        <th>Thay đổi mật khẩu</th>
                         <th>Chỉnh sửa</th>
                     </tr>
                 </thead>
@@ -66,6 +67,7 @@
                             <td>@item.CreatedDate</td>
                             <td>@item.CreatedBy</td>
                             <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td>@Html.ActionLink("Reset", "ResetPass", "Manager", new { id = @item.ID }, null)</td>
                             <td>
                                 @if (@item.User_Infor == null)
                                 {
@@ -74,7 +76,7 @@
                                 }
                                 @if (@item.User_Infor != null)
                                 {
-                                    @Html.ActionLink("Sửa", "Edit", "Manager", new { id = @item.ID }, null)
+                                    @Html.ActionLink("Sửa thông tin", "Edit", "Manager", new { id = @item.ID }, null)
                                     <span>|</span>
                                 }
                                 @Html.ActionLink("Xóa", "Delete", "Manager", new { id = @item.ID }, null)

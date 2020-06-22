@@ -25,6 +25,7 @@
                         <th>Ngày tạo</th>
                         <th>Người tạo</th>
                         <th>Trạng thái</th>
+                        <th>Thay đổi mật khẩu</th>
                         <th>Chỉnh sửa</th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                             <td>@item.CreatedDate</td>
                             <td>@item.CreatedBy</td>
                             <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
+                            <td>@Html.ActionLink("Reset", "ResetPass", "Staff", new { id = @item.ID }, null)</td>
                             <td>
                                 @if (@item.User_Infor == null)
                                 {

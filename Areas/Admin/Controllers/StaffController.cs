@@ -60,7 +60,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                         }
                         else
                         {
-                            ModelState.AddModelError("", "Thêm tài khoản nhân viên không thành công");
+                            SetAlert("Thêm tài khoản không thành công", "error");
                         }
                     }
                     catch (Exception) { }
@@ -109,7 +109,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                    SetAlert("Cập nhập tài khoản không thành công", "error");
                 }
             }
             return View("Home");
@@ -154,7 +154,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Cập nhập tài khoản không thành công");
+                SetAlert("Cập nhập tài khoản không thành công", "error");
             }
             return View();
         }
@@ -177,6 +177,11 @@ namespace Project_Year_2.Areas.Admin.Controllers
             {
                 status = result
             });
+        }
+        public ActionResult ResetPass(int ID)
+        {
+            new UserDao().ResetPass(ID);
+            return RedirectToAction("Home");
         }
     }
 }

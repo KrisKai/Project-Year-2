@@ -2116,6 +2116,8 @@
     <Content Include="Areas\Admin\Views\Error\UnAuthorzied.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Change.cshtml" />
+    <Content Include="Areas\Admin\Views\Authorized\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Authorized\Change.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />
@@ -2210,6 +2212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\Code\UserSession.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorizedController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
@@ -2237,6 +2240,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dao\EntityValidationErrors.cs" />
     <Compile Include="Models\Dao\UserDao.cs" />
     <Compile Include="Models\Dao\BillDao.cs" />
     <Compile Include="Models\Dao\MessageDao.cs" />
