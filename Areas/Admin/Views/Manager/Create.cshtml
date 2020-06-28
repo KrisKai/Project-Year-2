@@ -8,7 +8,10 @@
         <div class="col-md-6 m-5 bg-light">
             <div class="panel panel-default">
                 <div class="panel-heading font-weight-bolder">
-                    Tạo tài khoản Quản lí
+                    <h3>
+                        Tạo tài khoản Quản lí
+
+                    </h3>
                     <hr />
                 </div>
                 <div class="panel-body">
@@ -53,13 +56,14 @@
                             @Html.HiddenFor(model => model.Status, new { @Value = "True" })
                             @Html.HiddenFor(model => model.CreatedDate, new { @Value = DateTime.Now.ToShortDateString() })
                             @Html.HiddenFor(model => model.CreatedBy, new { @Value = Session["User"].ToString() })
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-6 ">
+
+                            <div class="row text-center">
+                                <div class="col-md-3 form-group">
                                     <input type="submit" value="Đăng kí" class="btn btn-default bg-primary text-white" />
                                 </div>
-                            </div>
-                            <div>
-                                @Html.ActionLink("Back to List", "Home")
+                                <div class="col-md-2 form-group">
+                                    @Html.ActionLink("Hủy", "Home", "Manager", new { @class = "btn btn-primary" })
+                                </div>
                             </div>
                         }
 
