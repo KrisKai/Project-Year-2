@@ -13,7 +13,8 @@
             <h6 class="m-0 font-weight-bold text-primary">Thông tin của Quản lí</h6>
         </div>
         <div class="card-body">
-
+            @Html.ActionLink("Tạo Tài khoản", "Create", "Manager", new { @class = "btn btn-outline-info btn-sm site-animate" })
+            <hr>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" cellspacing="0">
                     <thead>
@@ -32,7 +33,7 @@
                             {
                                 <tr id="row_@item.ID">
                                     <td>@item.UserName</td>
-                                    <td><a href="#" target="_blank" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Model_@item.ID">Chi tiết</a></td>
+                                    <td><a href="#" target="_blank" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Model_@item.ID">Chi tiết</a></td>
                                     <td>@item.CreatedDate</td>
                                     <td>@item.CreatedBy</td>
                                     <td>@(item.Status ? "Kích hoạt" : "Khóa")</td>

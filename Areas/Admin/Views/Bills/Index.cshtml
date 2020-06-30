@@ -20,7 +20,6 @@
                         <tr>
                             <th>Tên món ăn</th>
                             <th>Mô tả</th>
-                            @*<th>Tổng</th>*@
                             <th>Người tạo</th>
                             <th>Ngày tạo</th>
                             <th>Chỉnh sửa</th>
@@ -34,8 +33,7 @@
                                 <tr id="row_@item.ID_Bill">
 
                                     <td>@item.BillName</td>
-                                    <td>@Html.ActionLink("Chi tiết", "Show", "Bills", new { id = @item.ID_Bill }, null)</td>
-                                    @*<td>@item.Total</td>*@
+                                    <td>@Html.ActionLink("Chi tiết", "Show", "Bills", new { id = @item.ID_Bill }, new {@class= "btn btn-info btn-sm" })</td>
                                     <td>@item.CreatedBy</td>
                                     <td>@item.CreatedDate</td>
                                     <td>
