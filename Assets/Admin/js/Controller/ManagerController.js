@@ -1,5 +1,5 @@
 ﻿var user = {
-    init: function(){
+    init: function () {
         user.registerEvents();
     },
     registerEvents: function () {
@@ -8,7 +8,7 @@
             var btn = $(this);
             var id = btn.data('id');
             $.ajax({
-                url: "/Admin/User/ChangeStatus",
+                url: "/Admin/Manager/ChangeStatus",
                 data: { id: id },
                 dataType: "json",
                 type: "POST",

@@ -236,13 +236,13 @@
     <Content Include="Assets\Admin\img\Default_Avatar.png" />
     <Content Include="Assets\Admin\img\undraw_posting_photo.svg" />
     <Content Include="Assets\Admin\js\Controller\ChangeHot.js" />
+    <Content Include="Assets\Admin\js\Controller\ManagerController.js" />
     <Content Include="Assets\Admin\js\Controller\MenuController.js" />
     <Content Include="Assets\Admin\js\Controller\MessageController.js" />
     <Content Include="Assets\Admin\js\Controller\StaffController.js" />
     <Content Include="Assets\Admin\js\demo\datatables-demo.js" />
     <Content Include="Assets\Admin\js\sb-admin-2.js" />
     <Content Include="Assets\Admin\js\sb-admin-2.min.js" />
-    <Content Include="Assets\Admin\js\Controller\UserController.js" />
     <Content Include="Assets\Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Assets\Admin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\Admin\vendor\bootstrap\js\bootstrap.js" />
@@ -2118,7 +2118,6 @@
     <Content Include="Areas\Admin\Views\Setting\Change.cshtml" />
     <Content Include="Areas\Admin\Views\Authorized\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Authorized\Change.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\ForgotPass.cshtml" />
     <None Include="Scripts\jquery-3.5.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.0.js" />
     <Content Include="Scripts\jquery-3.5.0.min.js" />

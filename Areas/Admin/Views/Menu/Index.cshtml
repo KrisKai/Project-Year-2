@@ -6,7 +6,6 @@
 @model  IEnumerable<Project_Year_2.Models.EF.Menu>
 @section jsFooter{
     <script src="~/Assets/Admin/js/Controller/MenuController.js"></script>
-    <script src="~/Assets/Admin/js/Controller/ChangeHot.js"></script>
 }
 <div class="container-fluid">
 
@@ -18,6 +17,8 @@
         <div class="card-body">
 
             <div class="table-responsive">
+                @Html.ActionLink("Tạo Thực đơn", "Create", "Menu", new { @class = "btn btn-outline-info btn-sm site-animate" })
+                <hr>
                 <table class="table table-bordered" id="dataTable" cellspacing="0">
                     <thead>
                         <tr>
@@ -26,7 +27,6 @@
                             <th>Đường dẫn ảnh</th>
                             <th>Giá tiền</th>
                             <th>Loại</th>
-                            <th>Độ hot</th>
                             <th>Tình trạng</th>
                             <th>Chỉnh sửa</th>
                         </tr>
@@ -37,10 +37,9 @@
                             foreach (var item in Model)
                             {
                                 <tr id="row_@item.ID_Menu">
-                                    
+
                                     <td>@item.Name</td>
-                                    <td>@item.Description</td>
-                                    
+                                    <td style="width:200px">@item.Description</td>
                                     <td>
                                         @if (item.ImagePath != null)
                                         {
@@ -51,7 +50,7 @@
                                             <div>Trống</div>
                                         }
                                     </td>
-                                    <td>@item.Price</td>
+                                    <td>$@item.Price</td>
                                     <td>
                                         @if (item.Type == "Breakfast")
                                         {
@@ -69,8 +68,7 @@
                                         {
                                             <div>Trống</div>
                                         }
-                                                                    </td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Hot ? "Còn" : "Hết")</a></td>
+                                    </td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID_Menu">@(item.Status ? "Còn" : "Hết")</a></td>
 
                                     <td>

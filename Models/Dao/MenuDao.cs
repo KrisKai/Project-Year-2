@@ -64,13 +64,6 @@ namespace Project_Year_2.Models.Dao
         {
             return context.Menus.Count(x => x.Name == name) > 0;
         }
-        public bool ChangeHot(long id)
-        {
-            var food = context.Menus.Find(id);
-            food.Hot = !food.Hot;
-            context.SaveChanges();
-            return food.Status;
-        }
     }
     
 

@@ -96,10 +96,6 @@ namespace Project_Year_2.Areas.Admin.Controllers
             }
             return View("Index");
         }
-        public ActionResult ForgotPass()
-        {
-            return View();
-        }
         public ActionResult Logout()
         {
             Session.Abandon();

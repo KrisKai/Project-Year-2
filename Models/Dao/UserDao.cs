@@ -118,6 +118,7 @@ namespace Project_Year_2.Models.Dao
         {
             var user = context.Accounts.Find(id);
             user.Status = !user.Status;
+            user.ConfirmPassword = user.Password;
             context.SaveChanges();
             return user.Status;
         }

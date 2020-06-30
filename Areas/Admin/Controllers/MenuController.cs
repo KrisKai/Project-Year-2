@@ -121,16 +121,5 @@ namespace Project_Year_2.Areas.Admin.Controllers
                 status = result
             });
         }
-        [HttpPost]
-        public JsonResult ChangeHot(long id)
-        {
-            var result = new MenuDao().ChangeHot(id);
-            return Json(new
-            {
-                hot = result
-            });
-        }
-
-
     }
 }
