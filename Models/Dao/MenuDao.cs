@@ -28,7 +28,10 @@ namespace Project_Year_2.Models.Dao
                 food.Name = entity.Name;
                 food.Price = entity.Price;
                 food.Type = entity.Type;
-                food.ImagePath = entity.ImagePath;
+                if (entity.ImagePath != null)
+                {
+                    food.ImagePath = entity.ImagePath;
+                }
                 food.Description = entity.Description;
                 context.SaveChanges();
                 return true;
