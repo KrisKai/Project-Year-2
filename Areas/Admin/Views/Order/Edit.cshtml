@@ -52,7 +52,16 @@
                             <div class="form-group font-weight-bold">
                                 @Html.LabelFor(model => model.PeopleCount, new { @class = "control-label col-md-10" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.PeopleCount, new { @class = "form-control" })
+                                    @Html.DropDownList("PeopleCount",
+                                         new List<SelectListItem>
+                                        {
+                                        new SelectListItem { Text = "1 Người", Value = "1" },
+                                        new SelectListItem { Text = "2 Người",  Value = "2" },
+                                        new SelectListItem { Text = "3 Người", Value = "3" },
+                                        new SelectListItem { Text = "4+ Người", Value = "4" },
+
+                                        },
+                                        new { @class = "form-control"})
                                     @Html.ValidationMessageFor(model => model.PeopleCount, "", new { @class = "text-danger" })
                                 </div>
                             </div>

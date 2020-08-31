@@ -30,7 +30,12 @@
                             <tr id="row_@item.ID">
                                 <td>@item.UserName</td>
                                 <td>@item.Role</td>
-                                <td>@Html.ActionLink("Thay đổi vai trò", "Change","Authorized", new { id = item.ID},null)</td>
+                                <td>
+                                    @if (item.Role != "Admin")
+                                    {
+                                        @Html.ActionLink("Thay đổi vai trò", "Change", "Authorized", new { id = item.ID }, null)
+                                    }
+                                </td>
                             </tr>
                         }
                     }

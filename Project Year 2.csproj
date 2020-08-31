@@ -234,6 +234,7 @@
     <Content Include="Assets\Admin\img\bg.jpg" />
     <Content Include="Assets\Admin\img\DashBoard.jpg" />
     <Content Include="Assets\Admin\img\Default_Avatar.png" />
+    <Content Include="Assets\Admin\img\login-image.jpg" />
     <Content Include="Assets\Admin\img\undraw_posting_photo.svg" />
     <Content Include="Assets\Admin\js\Controller\ChangeHot.js" />
     <Content Include="Assets\Admin\js\Controller\ManagerController.js" />

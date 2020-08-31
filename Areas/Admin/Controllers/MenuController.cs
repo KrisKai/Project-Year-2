@@ -69,6 +69,7 @@ namespace Project_Year_2.Areas.Admin.Controllers
         public ActionResult Edit(int ID)
         {
             var menu = new MenuDao().ViewDetail(ID);
+            TempData["ID_Table"] = ID;
             return View(menu);
         }
         [HttpPost]

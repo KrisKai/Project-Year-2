@@ -26,7 +26,6 @@
                             <th>Tên</th>
                             <th>Mô tả</th>
                             <th>Ngày tạo</th>
-                            <th>Trạng thái</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                     </thead>
@@ -41,7 +40,6 @@
                                     <td><a href="#" target="_blank" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Model_@item.ID_Table">Chi tiết</a></td>
                                     
                                     <td>@item.CreatedDate</td>
-                                    <td><a href="#" class="btn-active" data-id="@item.ID_Table">@(item.Status ? "Chờ" : "Xong")</a></td>
                                     <td>
                                         @Html.ActionLink("Sửa", "Edit", "Order", new { id = @item.ID_Table }, null)
                                         |
